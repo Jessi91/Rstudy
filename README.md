@@ -1,4 +1,4 @@
-# MedAssistOnline
+# RStudy
 Projet M1/M2
 
 **Toutes nouvelles librairies intsallés doient être indiqué 'requirements.txt' **
