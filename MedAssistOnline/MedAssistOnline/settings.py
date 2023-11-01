@@ -75,17 +75,17 @@ WSGI_APPLICATION = 'MedAssistOnline.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.mysql',
-        # 'NAME': 'MAO',
-        # 'USER': 'root',
-        # 'PASSWORD': 'root',
-        # 'HOST' : 'localhost',
-        # 'PORT' : '3306',
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'MAO',
+        'USER': 'root',
+        'PASSWORD': '',
+        'HOST' : '127.0.0.1',
+        'PORT' : '3306',
         
-#     }
-# }
+    }
+}
 
 
 # Password validation
@@ -110,9 +110,9 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'fr-fr'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'FR'
 
 USE_I18N = True
 
