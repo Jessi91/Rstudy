@@ -76,18 +76,11 @@ WSGI_APPLICATION = 'RStudy.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-<<<<<<< HEAD:MedAssistOnline/MedAssistOnline/settings.py
-        'NAME': 'M  AO',
-        'USER': 'root',
-        'PASSWORD': '',
-        'HOST' : 'localhost',
-=======
         'NAME': 'RStudy',
         # 'NAME': 'MAO',
         'USER': 'root',
         'PASSWORD': '',
         'HOST' : '127.0.0.1',
->>>>>>> 1289e85bb065c89a1d5d27c9cd36e20de902a5f2:RStudy/RStudy/settings.py
         'PORT' : '3306',
         
     }
