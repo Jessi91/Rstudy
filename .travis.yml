@@ -1,13 +1,12 @@
 language: python
 
 python:
-    - "3.10"
+    - "3.10.4"
 env:
     - SECRET_KEY='TEST'
 services:
     - mysql
 install:
     - pipenv install
-
 script:
     - python manage.py test
