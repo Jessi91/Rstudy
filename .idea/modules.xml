@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/MedAssistOnline.iml" filepath="$PROJECT_DIR$/.idea/MedAssistOnline.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/RStudy.iml" filepath="$PROJECT_DIR$/.idea/MedAssistOnline.iml" />
     </modules>
   </component>
 </project>
