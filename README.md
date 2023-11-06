@@ -11,4 +11,10 @@ Projet M1/M2
 
 **Pour réaliser des migrations (DB)**
 1. ```python manage.py makemigrations``` 
-2. ```python manage.py migrate``` 
+2. ```python manage.py migrate```
+
+**Pour le run le projet**
+1. Se mettre dans le path du repo 
+2. Activer le venv
+3. Se mettre dans le path du projet RStudy => ```cd RStudy```
+4. run le server 
