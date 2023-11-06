@@ -1,3 +1,5 @@
 # Venv
 venv/*
-*/_pycache_/*
+.history/*
+RStudy/_pycache_/*
+RStudy/settings.py

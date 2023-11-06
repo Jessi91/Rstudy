@@ -14,7 +14,7 @@
   <component name="TemplatesService">
     <option name="TEMPLATE_FOLDERS">
       <list>
-        <option value="$MODULE_DIR$/MedAssistOnline/home/templates" />
+        <option value="$MODULE_DIR$/RStudy/home/templates" />
       </list>
     </option>
   </component>

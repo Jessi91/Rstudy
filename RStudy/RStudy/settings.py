@@ -51,7 +51,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'MedAssistOnline.urls'
+ROOT_URLCONF = 'RStudy.urls'
 
 TEMPLATES = [
     {
@@ -69,23 +69,23 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'MedAssistOnline.wsgi.application'
+WSGI_APPLICATION = 'RStudy.wsgi.application'
 
 
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.mysql',
-        # 'NAME': 'MAO',
-        # 'USER': 'root',
-        # 'PASSWORD': 'root',
-        # 'HOST' : 'localhost',
-        # 'PORT' : '3306',
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'RStudy',
+        'USER': 'root',
+        'PASSWORD': 'root',
+        'HOST' : 'localhost',
+        'PORT' : '3306',
         
-#     }
-# }
+    }
+}
 
 
 # Password validation
