@@ -1,3 +1,9 @@
+<<<<<<< HEAD
+
+
+
+=======
+>>>>>>> b7db40d8b983b0526e33617935fc09c1f950b4cb
 # Django #
 *.log
 *.pot
@@ -111,12 +117,15 @@ venv/*
 # mypy 
 .mypy_cache/ 
 
+<<<<<<< HEAD
+=======
 # Sublime Text # 
 *.tmlanguage.cache 
 *.tmPreferences.cache 
 *.stTheme.cache 
 *.sublime-workspace 
 *.sublime-project 
+>>>>>>> b7db40d8b983b0526e33617935fc09c1f950b4cb
 
 # sftp configuration file 
 sftp-config.json 
@@ -134,4 +143,8 @@ GitHub.sublime-settings
 !.vscode/tasks.json 
 !.vscode/launch.json 
 !.vscode/extensions.json 
+<<<<<<< HEAD
 .history
+=======
+.history
+>>>>>>> b7db40d8b983b0526e33617935fc09c1f950b4cb
