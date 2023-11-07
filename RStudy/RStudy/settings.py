@@ -79,13 +79,9 @@ WSGI_APPLICATION = 'RStudy.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'rstudy',
+        'NAME': 'MAO',
         'USER': 'root',
-<<<<<<< HEAD
-        'PASSWORD': '',
-=======
-        # 'PASSWORD': 'root',
->>>>>>> b7db40d8b983b0526e33617935fc09c1f950b4cb
+        'PASSWORD': 'root',
         'HOST' : 'localhost',
         'PORT' : '3306',
         
