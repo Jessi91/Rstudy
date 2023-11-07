@@ -5,38 +5,24 @@ from .manager import UserManager
 # https://docs.djangoproject.com/en/4.2/ref/models/fields/
 
 
-class User(AbstractUser):
+class User( AbstractUser):
     ROLE_CHOICES = (
         ('admin', 'Administrateur'),
         ('etudiant', 'Etudiant'),
         ('tuteur', 'Tuteur'),
         ('enseignant', 'Enseignant'),
     )
-
-    # _id_user = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    # _nom = models.CharField(max_length=255)
-    # _prenom = models.CharField(max_length=255)
-    _sexe_f = models.BooleanField(blank=True, null=True)
-    _date_naissance = models.DateField()
-    _adresse = models.CharField(max_length=255)
-    _num_tel = models.IntegerField(blank=True, null=True, unique=True)
-    _adresse_mail = models.EmailField(max_length=255, unique=True)
-    # _mot_de_passe = models.
-    _role = models.CharField(max_length=50, choices=ROLE_CHOICES)
+    
     username = None
     
-    # @property
-    # def  get_id_user(self):
-    #     return self._id_user
+    _sexe_f = models.BooleanField(blank=True, null=True)
+    _date_naissance = models.DateField(blank=True, null=True)
+    _adresse = models.CharField(max_length=255)
+    _num_tel = models.IntegerField(blank=True, null=True, unique=True)
+    email = models.EmailField(max_length=255, unique=True)
 
-#     # @property
-    # def  get_nom(self):
-#     #     return self._nom
-
-#     # @property
-    # def  get_prenom(self):
-#     #     return self._prenom
-
+    _role = models.CharField(max_length=50, choices=ROLE_CHOICES)
+    
     @property
     def  get_sexe_f(self):
         return self._sexe_f
@@ -54,13 +40,10 @@ class User(AbstractUser):
         return self._num_tel
 
     @property
-    def  get_adresse_mail(self):
-        return self._adresse_mail
-
-    @property
     def  get_role(self):
         return self._role
+    
 
-    USERNAME_FIELD = '_adresse_mail'
+    USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []
     objects = UserManager()

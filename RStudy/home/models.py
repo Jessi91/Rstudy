@@ -1,8 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 import uuid
-from django.contrib.auth import get_user_model
-User = get_user_model 
 from django.conf import settings
 
 # Create your models here.
