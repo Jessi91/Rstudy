@@ -18,3 +18,6 @@ Projet M1/M2
 2. Activer le venv
 3. Se mettre dans le path du projet RStudy => ```cd RStudy```
 4. run le server 
+
+**creer un admin**
+```py manage.py createsuperuser```
