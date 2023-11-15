@@ -1,5 +1,5 @@
 """
-URL configuration for RStudy project.
+URL configuration for MedAssistOnline project.
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/4.2/topics/http/urls/
@@ -16,16 +16,9 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-import user.views
-import home.views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('home.urls')),
-    # path("accounts/", include("django.contrib.auth.urls")),
-    path('signup/', user.views.signup_page, name='signup'),
-    path('creer_groupe/',home.views.creer_groupe, name='creer_groupe'),
-    path('liste_groupes/', home.views.liste_groupes, name='liste_groupes'),
-    path('inviter_amis/<int:groupe_id>/', home.views.inviter_amis, name='inviter_amis'),
-]
 
+]

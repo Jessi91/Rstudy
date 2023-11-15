@@ -1,0 +1,16 @@
+
+
+{% block content %}
+  <h2>Inviter des amis dans {{ groupe.get_nom_groupe }}</h2>
+  <form method="post" action="">
+    {% csrf_token %}
+    <label for="amis">Choisir des amis à inviter:</label>
+    <select name="amis" multiple>
+      {% for ami in amis %}
+        <option value="{{ ami.id }}">{{ ami.username }}</option>
+      {% endfor %}
+    </select>
+    <br>
+    <button type="submit">Inviter</button>
+  </form>
+{% endblock %}

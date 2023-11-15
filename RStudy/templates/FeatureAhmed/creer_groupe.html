@@ -1,0 +1,15 @@
+
+
+{% block content %}
+  <h2>Créer un groupe</h2>
+  <form method="post" action="">
+    {% csrf_token %}
+    <label for="nom_groupe">Nom du groupe:</label>
+    <input type="text" name="nom_groupe" required>
+    <br>
+    <label for="description">Description:</label>
+    <textarea name="description"></textarea>
+    <br>
+    <button type="submit">Créer le groupe</button>
+  </form>
+{% endblock %}
