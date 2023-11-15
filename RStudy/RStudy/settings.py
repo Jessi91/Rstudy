@@ -30,7 +30,6 @@ ALLOWED_HOSTS = []
 
 
 # Application definition
-# Ajouter les apps à chaque création : '<nom_app>.apps.HomeConfig's,
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -88,6 +87,7 @@ DATABASES = {
 }
 
 AUTH_USER_MODEL = "user.User"
+LOGIN_REDIRECT_URL = 'login'
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
