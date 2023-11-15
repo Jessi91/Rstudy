@@ -22,10 +22,5 @@ import home.views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('home.urls')),
-    # path("accounts/", include("django.contrib.auth.urls")),
-    path('signup/', user.views.signup_page, name='signup'),
-    path('creer_groupe/',home.views.creer_groupe, name='creer_groupe'),
-    path('liste_groupes/', home.views.liste_groupes, name='liste_groupes'),
-    path('inviter_amis/<int:groupe_id>/', home.views.inviter_amis, name='inviter_amis'),
 ]
 
