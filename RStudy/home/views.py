@@ -1,6 +1,54 @@
-from django.shortcuts import render
+from django.contrib.auth.decorators import login_required
+from django.conf import settings
+from django.contrib.auth import login
+from django.shortcuts import redirect, render
+from django.views.generic import View
+from django.contrib.auth import login, authenticate
+from .models import GroupeEtude, MembresGroupe
+from django.contrib.auth import get_user_model as User
+
 
 
 # Create your views here.
 def index(request):
     return render(request, 'home/index.html')
+
+@login_required
+def creer_groupe(request):
+    if request.method == 'POST':
+        nom_groupe = request.POST.get('nom_groupe')
+        description = request.POST.get('description', '')
+        
+        # Créer le groupe
+        nouveau_groupe = GroupeEtude.objects.create(_nom_groupe=nom_groupe, _description=description)
+
+        # Ajouter l'utilisateur comme administrateur du groupe
+        MembresGroupe.objects.create(_user=request.user, _groupe=nouveau_groupe, _role_groupe='admin')
+
+        return redirect('liste_groupes')  # Rediriger vers la liste des groupes
+    return render(request,  'FeatureAhmed/creer_groupe.html')
+
+@login_required
+def liste_groupes(request):
+    groupes = GroupeEtude.objects.all()
+    return render(request, 'FeatureAhmed/liste_groupes.html', {'groupes': groupes})
+
+@login_required
+def inviter_amis(request, groupe_id):
+    try:
+        groupe = GroupeEtude.objects.get(pk=groupe_id)
+    except GroupeEtude.DoesNotExist:
+        raise Http404("Le groupe n'existe pas.")
+
+    if request.method == 'POST':
+        amis_ids = request.POST.getlist('amis')
+        
+        # Ajouter les amis au groupe avec le rôle 'user'
+        for ami_id in amis_ids:
+            ami = User.objects.get(pk=ami_id)
+            MembresGroupe.objects.create(_user=ami, _groupe=groupe, _role_groupe='user')
+
+        return redirect('liste_groupes')
+
+    amis = User.objects.exclude(membresgroupe__groupe=groupe)  # Exclure les amis déjà dans le groupe
+    return render(request, 'FeatureAhmed/inviter_amis.html', {'groupe': groupe, 'amis': amis})

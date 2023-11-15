@@ -1,7 +1,6 @@
-# RStudy
-Projet M1/M2
+### RStudy    [![Build Status](https://app.travis-ci.com/Jessi91/Rstudy.svg?token=L98WEBS8FGkweyEqUq6x&branch=main)](https://app.travis-ci.com/Jessi91/Rstudy)
 
-**Toutes nouvelles librairies intsallés doient être indiqué 'requirements.txt' **
+**Toutes nouvelles librairies intsallés doient être indiqué 'requirements.txt'**
 - ```make install``` : Installer toutes les libraires du fichier
 - ```venv\Scripts\activate``` : Activer le venv
 - ```deactivate``` : désactiver le venv
@@ -18,3 +17,6 @@ Projet M1/M2
 2. Activer le venv
 3. Se mettre dans le path du projet RStudy => ```cd RStudy```
 4. run le server 
+
+**creer un admin**
+```py manage.py createsuperuser```
