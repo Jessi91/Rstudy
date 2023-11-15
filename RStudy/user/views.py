@@ -19,11 +19,11 @@ def signup_page(request):
     return render(request, 'user/signup.html', context={'form': form})
 
 def login_page(request):
-    form = forms.UserCreationForm()
+    form = forms.LoginForm()
     message = ''
 
     if request.method == 'POST':
-        form = forms.UserCreationForm(request.POST)
+        form = forms.LoginForm(request.POST)
         if form.is_valid():
             user = authenticate(
                 email=form.cleaned_data['email'],
