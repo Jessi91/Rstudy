@@ -100,10 +100,11 @@ celerybeat-schedule.*
 .env 
 .venv 
 env/ 
-
+venv/
 ENV/ 
 env.bak/ 
 venv.bak/ 
+*/Scripts/
 # mkdocs documentation 
 /site 
 
@@ -134,5 +135,8 @@ GitHub.sublime-settings
 !.vscode/launch.json 
 !.vscode/extensions.json 
 .history
+
+# Mine
+test.html
 
 RStudy/RStudy/settings.py
