@@ -38,7 +38,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="C:\Users\jess9\OneDrive\Documents\MASTER_MIAGE\MedAssistOnline\venv"
+VIRTUAL_ENV="C:\Users\mayaa\OneDrive\Bureau\M1 MIAGE\S1\Rstudy\venv"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"

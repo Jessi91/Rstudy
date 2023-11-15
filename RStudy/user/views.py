@@ -19,11 +19,11 @@ def signup_page(request):
     return render(request, 'user/signup.html', context={'form': form})
 
 def login_page(request):
-    form = forms.LoginForm()
+    form = forms.UserCreationForm()
     message = ''
 
     if request.method == 'POST':
-        form = forms.LoginForm(request.POST)
+        form = forms.UserCreationForm(request.POST)
         if form.is_valid():
             user = authenticate(
                 email=form.cleaned_data['email'],
@@ -41,3 +41,22 @@ def login_page(request):
 @login_required
 def reussi(request) :
     return render(request, 'user/reussi.html')
+
+@login_required
+def readProfile(request):
+    return render(request, 'user/profile.html', {'user': request.user})
+
+@login_required
+def update_profile(request):
+    user = request.user
+
+    if request.method == 'POST':
+        form = forms.ReadUpdateForm(request.POST, instance=user)
+        if form.is_valid():
+            form.save()
+            # Redirigez l'utilisateur vers la page de profil mise à jour ou toute autre page souhaitée.
+            return redirect('profile')
+    else:
+        form = forms.ReadUpdateForm(instance=user)
+
+    return render(request, 'user/update_profil.html', {'form': form})

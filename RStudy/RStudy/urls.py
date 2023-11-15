@@ -21,9 +21,5 @@ import user.views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('home.urls')),
-    path('signup/', user.views.signup_page, name='signup'),
-    path('login/', user.views.login_page, name='login'),
-    path('succes/', user.views.reussi, name='succes'),
-
-
+    path('user-', include('user.urls')),
 ]

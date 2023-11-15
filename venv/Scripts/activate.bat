@@ -8,7 +8,7 @@ if defined _OLD_CODEPAGE (
     "%SystemRoot%\System32\chcp.com" 65001 > nul
 )
 
-set VIRTUAL_ENV=C:\Users\jess9\OneDrive\Documents\MASTER_MIAGE\MedAssistOnline\venv
+set VIRTUAL_ENV=C:\Users\mayaa\OneDrive\Bureau\M1 MIAGE\S1\Rstudy\venv
 
 if not defined PROMPT set PROMPT=$P$G
 
