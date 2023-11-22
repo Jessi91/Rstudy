@@ -2,6 +2,8 @@ from django.db import models
 from django.contrib.auth.models import AbstractUser
 import uuid
 from django.conf import settings
+from django.contrib.auth import get_user_model as User
+
 
 # Create your models here.
 # https://docs.djangoproject.com/en/4.2/ref/models/fields/
@@ -217,6 +219,11 @@ class Document(models.Model):
 class GroupeEtude(models.Model):
     _nom_groupe = models.CharField(max_length=255)
     _description = models.CharField(max_length=255, blank=True, null=True)
+    
+    @property
+    def add_user(self, user):
+        MembresGroupe.objects.create(_user=user, _groupe=self, _role_groupe='user')
+
 
     @property
     def  get_nom_groupe(self):
@@ -239,6 +246,11 @@ class MembresGroupe(models.Model):
     _groupe = models.ForeignKey(GroupeEtude, on_delete=models.PROTECT)
     _date_ajout = models.DateTimeField(auto_now_add=True)
     _role_groupe = models.CharField(max_length=255, choices=ROLE_GROUPES)
+
+
+    @property
+    def add_user(self, user):
+        MembresGroupe.objects.create(_user=user, _groupe=self, _role_groupe='user')
 
     @property
     def  get_user(self):
