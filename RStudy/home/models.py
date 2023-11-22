@@ -2,6 +2,8 @@ from django.db import models
 from django.contrib.auth.models import AbstractUser
 import uuid
 from django.conf import settings
+from django.contrib.auth import get_user_model as User
+
 
 # Create your models here.
 # https://docs.djangoproject.com/en/4.2/ref/models/fields/
@@ -79,9 +81,27 @@ class Document(models.Model):
 
     
 class GroupeEtude(models.Model):
+<<<<<<< HEAD
+    _nom_groupe = models.CharField(max_length=255)
+    _description = models.CharField(max_length=255, blank=True, null=True)
+    
+    @property
+    def add_user(self, user):
+        MembresGroupe.objects.create(_user=user, _groupe=self, _role_groupe='user')
+
+
+    @property
+    def  get_nom_groupe(self):
+        return self._nom_groupe
+
+    @property
+    def  get_description(self):
+        return self._description
+=======
     id_group = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     nom_groupe = models.CharField(max_length=255)
     description = models.CharField(max_length=255, blank=True, null=True)
+>>>>>>> 660a54e1845ed031fbb594b2cab419b5a035b986
 
 
 # User -- GroupeEtude : (M;N)
@@ -92,10 +112,38 @@ class MembresGroupe(models.Model):
         ('user', 'User'),
     )
 
+<<<<<<< HEAD
+    _user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.PROTECT)
+    _groupe = models.ForeignKey(GroupeEtude, on_delete=models.PROTECT)
+    _date_ajout = models.DateTimeField(auto_now_add=True)
+    _role_groupe = models.CharField(max_length=255, choices=ROLE_GROUPES)
+
+
+    @property
+    def add_user(self, user):
+        MembresGroupe.objects.create(_user=user, _groupe=self, _role_groupe='user')
+
+    @property
+    def  get_user(self):
+        return self._user
+
+    @property
+    def  get_groupe(self):
+        return self._groupe
+
+    @property
+    def  get_date_ajout(self):
+        return self._date_ajout
+
+    @property
+    def  get_role_groupe(self):
+        return self._role_groupe
+=======
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.PROTECT)
     groupe = models.ForeignKey(GroupeEtude, on_delete=models.PROTECT)
     date_ajout = models.DateTimeField(auto_now_add=True)
     role_groupe = models.CharField(max_length=255, choices=ROLE_GROUPES)
+>>>>>>> 660a54e1845ed031fbb594b2cab419b5a035b986
 
     
 
