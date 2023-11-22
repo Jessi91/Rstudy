@@ -1,9 +1,6 @@
 from django.contrib.auth.decorators import login_required
 from django.conf import settings
-from django.contrib.auth import login
 from django.shortcuts import redirect, render
-from django.views.generic import View
-from django.contrib.auth import login, authenticate
 from .models import GroupeEtude, MembresGroupe
 from django.contrib.auth import get_user_model as User
 from django.shortcuts import render, get_object_or_404, redirect

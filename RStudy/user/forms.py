@@ -7,7 +7,8 @@ from django import forms
 class SignupForm(UserCreationForm):
     class Meta(UserCreationForm.Meta):
         model = get_user_model()
-        fields = ('email', 'password')
+        fields = ('email', 'first_name', 'last_name', 'sexe_f', 'date_naissance', 'adresse', 'num_tel')
+
 
 class LoginForm(forms.Form):
     email = forms.CharField(max_length=63, widget=forms.EmailInput, label='Email')
@@ -16,6 +17,6 @@ class LoginForm(forms.Form):
 class ReadUpdateForm(forms.ModelForm):
     class Meta:
         model = get_user_model()
-        fields = ('email', 'first_name', 'last_name', '_sexe_f', '_date_naissance', '_adresse', '_num_tel')
+        fields = ('email', 'first_name', 'last_name', 'sexe_f', 'date_naissance', 'adresse', 'num_tel')
 
 
