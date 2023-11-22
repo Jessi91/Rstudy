@@ -19,11 +19,11 @@ def signup_page(request):
     return render(request, 'user/signup.html', context={'form': form})
 
 def login_page(request):
-    form = forms.UserCreationForm()
+    form = forms.LoginForm()
     message = ''
 
     if request.method == 'POST':
-        form = forms.UserCreationForm(request.POST)
+        form = forms.LoginForm(request.POST)
         if form.is_valid():
             user = authenticate(
                 email=form.cleaned_data['email'],
@@ -32,7 +32,7 @@ def login_page(request):
             if user is not None:
                 login(request, user)
                 message = f'Bonjour, {user.email}! Vous êtes connecté.'
-                return redirect('succes')
+                return redirect('home')
             else:
                 message = 'Les informations invalides.'
     return render(
