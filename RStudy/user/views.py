@@ -32,7 +32,7 @@ def login_page(request):
             if user is not None:
                 login(request, user)
                 message = f'Bonjour, {user.email}! Vous êtes connecté.'
-                return redirect('succes')
+                return redirect('home')
             else:
                 message = 'Les informations invalides.'
     return render(
