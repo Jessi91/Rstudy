@@ -98,44 +98,19 @@ class MembresGroupe(models.Model):
         ('user', 'User'),
     )
 
-<<<<<<< HEAD
-    _user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.PROTECT)
-    _groupe = models.ForeignKey(GroupeEtude, on_delete=models.PROTECT)
-    _date_ajout = models.DateTimeField(auto_now_add=True)
-    _role_groupe = models.CharField(max_length=255, choices=ROLE_GROUPES)
-
-
-    @property
-    def add_user(self, user):
-        MembresGroupe.objects.create(_user=user, _groupe=self, _role_groupe='user')
-
-    @property
-    def  get_user(self):
-        return self._user
-
-    @property
-    def  get_groupe(self):
-        return self._groupe
-
-    @property
-    def  get_date_ajout(self):
-        return self._date_ajout
-
-    @property
-    def  get_role_groupe(self):
-        return self._role_groupe
-=======
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.PROTECT)
     groupe = models.ForeignKey(GroupeEtude, on_delete=models.PROTECT)
     date_ajout = models.DateTimeField(auto_now_add=True)
     role_groupe = models.CharField(max_length=255, choices=ROLE_GROUPES)
->>>>>>> 660a54e1845ed031fbb594b2cab419b5a035b986
 
+
+    @property
+    def add_user(self, user):
+        MembresGroupe.objects.create(user=user, groupe=self, role_groupe='user')
     
 
     
 class Ressource(models.Model):
-    id_matiere = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     matiere = models.ForeignKey(Matiere, on_delete=models.PROTECT)
     description = models.CharField(max_length=255, blank=True, null=True)
     type = models.CharField(max_length=255)
