@@ -4,6 +4,18 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+## [0.3] 
+
+- Inviter des amis 
+
+### Added
+
+## [0.2.1] - 22-11-2023
+
+### Added
+
+
+
 
 ## [0.0.2] - 08-11-2023
 
