@@ -81,27 +81,13 @@ class Document(models.Model):
 
     
 class GroupeEtude(models.Model):
-<<<<<<< HEAD
-    _nom_groupe = models.CharField(max_length=255)
-    _description = models.CharField(max_length=255, blank=True, null=True)
-    
-    @property
-    def add_user(self, user):
-        MembresGroupe.objects.create(_user=user, _groupe=self, _role_groupe='user')
-
-
-    @property
-    def  get_nom_groupe(self):
-        return self._nom_groupe
-
-    @property
-    def  get_description(self):
-        return self._description
-=======
     id_group = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     nom_groupe = models.CharField(max_length=255)
     description = models.CharField(max_length=255, blank=True, null=True)
->>>>>>> 660a54e1845ed031fbb594b2cab419b5a035b986
+    
+    @property
+    def add_user(self, user):
+        MembresGroupe.objects.create(user=user, groupe=self, role_groupe='user')
 
 
 # User -- GroupeEtude : (M;N)

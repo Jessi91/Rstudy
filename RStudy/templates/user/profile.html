@@ -1,0 +1,17 @@
+<!-- Dans votre template (personal_info.html) -->
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Informations Personnelles</title>
+</head>
+<body>
+    test
+    <h1>Informations Personnelles de {{ user.username }}</h1>
+    <p>Email: {{ user.email }}</p>
+    <!-- Ajoutez d'autres champs d'information selon vos besoins -->
+
+    <!-- Ajoutez des liens pour permettre à l'utilisateur de modifier ses informations si nécessaire -->
+    <a href="{% url 'update_profile' %}">Modifier les informations</a>
+</body>
+</html>

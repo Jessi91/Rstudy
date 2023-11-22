@@ -22,10 +22,10 @@ def creer_groupe(request):
         description = request.POST.get('description', '')
         
         # Créer le groupe
-        nouveau_groupe = GroupeEtude.objects.create(_nom_groupe=nom_groupe, _description=description)
+        nouveau_groupe = GroupeEtude.objects.create(nom_groupe=nom_groupe, description=description)
 
         # Ajouter l'utilisateur comme administrateur du groupe
-        MembresGroupe.objects.create(_user=request.user, _groupe=nouveau_groupe, _role_groupe='admin')
+        MembresGroupe.objects.create(user=request.user, groupe=nouveau_groupe, role_groupe='admin')
 
         return redirect('liste_groupes')  # Rediriger vers la liste des groupes
     return render(request,  'FeatureAhmed/creer_groupe.html')
@@ -54,8 +54,8 @@ def inviter_amis(request, groupe_id):
         return redirect('liste_groupes')
 
     # Récupérer les membres du groupe
-    membres_du_groupe = MembresGroupe.objects.filter(_groupe=groupe)
-    amis = User.objects.exclude(id__in=membres_du_groupe.values('_user_id'))
+    membres_du_groupe = MembresGroupe.objects.filter(groupe=groupe)
+    amis = User.objects.exclude(id__in=membres_du_groupe.values('user_id'))
 
     
     return render(request, 'FeatureAhmed/inviter_amis.html', {'groupe': groupe, 'amis': amis})
