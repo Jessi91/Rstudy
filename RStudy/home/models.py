@@ -1,5 +1,4 @@
 from django.db import models
-from django.contrib.auth.models import AbstractUser
 import uuid
 from django.conf import settings
 from django.contrib.auth import get_user_model as User
@@ -56,21 +55,6 @@ class MatiereFormation(models.Model):
     formation = models.ForeignKey(Formation, on_delete=models.PROTECT)
     matiere = models.ForeignKey(Matiere, on_delete=models.PROTECT)
     ects = models.FloatField(default=1)
-
-    
-class Forum(models.Model):
-    id_forum = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    nom = models.CharField(max_length=255)
-    description = models.CharField(max_length=255)
-    ouvert = models.BooleanField(default=False)
-
-# User -- Forum : (M;N)
-class ParticipationForum(models.Model):
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.PROTECT)
-    forum = models.ForeignKey(Forum, on_delete=models.PROTECT)
-    date = models.DateTimeField(auto_now_add=True)
-    titre_msg = models.CharField(max_length=255)
-    contenu = models.CharField(max_length=255)
 
 class Document(models.Model):
     id_doc = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
