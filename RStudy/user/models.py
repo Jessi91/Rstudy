@@ -17,7 +17,7 @@ class User( AbstractUser):
     
     sexe_f = models.BooleanField(blank=True, null=True)
     date_naissance = models.DateField(blank=True, null=True)
-    adresse = models.CharField(max_length=255)
+    adresse = models.CharField(max_length=255, blank=True, null=True)
     num_tel = models.IntegerField(blank=True, null=True, unique=True)
     email = models.EmailField(max_length=255, unique=True)
 
