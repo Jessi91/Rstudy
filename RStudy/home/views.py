@@ -68,8 +68,8 @@ def inviter_amis(request, id):
 
 
     # Récupérer les membres du groupe
-    membres_du_groupe = MembresGroupe.objects.filter(_groupe=groupe)
-    amis = User.objects.exclude(id__in=membres_du_groupe.values('_user_id'))
+    membres_du_groupe = MembresGroupe.objects.filter(groupe=groupe)
+    amis = User.objects.exclude(id__in=membres_du_groupe.values('user_id'))
 
     
     return render(request, 'FeatureAhmed/inviter_amis.html', {'groupe': groupe, 'amis': amis})

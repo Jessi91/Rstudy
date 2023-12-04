@@ -126,7 +126,6 @@ class MembresGroupe(models.Model):
 
     
 class Ressource(models.Model):
-    id_matiere = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     matiere = models.ForeignKey(Matiere, on_delete=models.PROTECT)
     description = models.CharField(max_length=255, blank=True, null=True)
     type = models.CharField(max_length=255)

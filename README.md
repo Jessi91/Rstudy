@@ -1,22 +1,55 @@
 ### RStudy    [![Build Status](https://app.travis-ci.com/Jessi91/Rstudy.svg?token=L98WEBS8FGkweyEqUq6x&branch=main)](https://app.travis-ci.com/Jessi91/Rstudy)
 
-**Toutes nouvelles librairies intsallés doient être indiqué 'requirements.txt'**
-- ```make install``` : Installer toutes les libraires du fichier
-- ```venv\Scripts\activate``` : Activer le venv
-- ```deactivate``` : désactiver le venv
-- ```pip freeze``` : Voir les librairies du venv
-- ```py manage.py runserver``` : Run le server
+<!-- ### RStudy    [![Build Status](https://https://img.shields.io/travis/com/Jessi91/Rstudy.svg?token=L98WEBS8FGkweyEqUq6x&branch=main)](https://travis-ci.com/github/Jessi91/Rstudy) -->
 
+## Configuration environnement
+- Activer Mysql
+- Copier le fichier `RStudy/RStudy/settings_default.py` and rename `RStudy/RStudy/settings.py`
+- Set the settings file for your DB :
+```py
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        # DataBase Name
+        'NAME': 'rstudy',
 
-**Pour réaliser des migrations (DB)**
-1. ```python manage.py makemigrations``` 
-2. ```python manage.py migrate```
+        'USER': 'root',
+        'HOST' : 'localhost',
+        'PORT' : '3306',
+        
+        # Your password
+        'PASSWORD' : '',
+    }
+}
+```
+> Nous recommandons l'utilisation d'un environement virtuel (venv) pour palier à tous problèmes de versionages, la procédure est simple : 
+```
+python -m venv venv
+```
+- Activons le venv :
+- Pour installer les librairies ayant les versions nécessaires (Elles sont inscrites dans), vous avez seulement à tapper la commande ci-dessous :  
+```
+make install
+```
 
-**Pour le run le projet**
+## Migrer les données 
+
 1. Se mettre dans le path du repo 
-2. Activer le venv
-3. Se mettre dans le path du projet RStudy => ```cd RStudy```
-4. run le server 
+2. Se mettre dans le path du l'app RStudy avec la commande => ```cd RStudy```
+
+3. Pour réaliser des migrations des données soit, transformer le code python de 'models.py' en du code sql
+```
+python manage.py makemigrations
+```
+4. Pour transfer à la base de données :
+```
+python manage.py migrate
+```
+
+## Pour démmarer le server
+1. Se mettre dans le path du repo 
+2. Se mettre dans le path du l'app RStudy avec la commande => ```cd RStudy```
+3. Run le server avec la commande ```py manage.py runserver```
 
 **creer un admin**
 ```py manage.py createsuperuser```
