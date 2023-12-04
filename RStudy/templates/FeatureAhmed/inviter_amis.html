@@ -7,7 +7,7 @@
     <label for="amis">Choisir des amis à inviter:</label>
     <select name="amis" multiple>
       {% for ami in amis %}
-        <option value="{{ ami.id }}">{{ ami.username }}</option>
+        <option value="{{ ami.id }}">{{ ami.email }}</option>
       {% endfor %}
     </select>
     <br>

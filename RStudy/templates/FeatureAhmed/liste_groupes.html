@@ -1,10 +1,8 @@
-
-
 {% block content %}
   <h2>Liste des groupes</h2>
   <ul>
-    {% for groupe in groupes %}
-      <li>{{ groupe.get_nom_groupe }} - <a href="{% url 'inviter_amis' groupe.id %}">Inviter des amis</a></li>
+    {% for groupe in groupes %} {# Utiliser groupe plutôt que group #}
+      <li>{{ groupe.get_nom_groupe }} - <a href= "{% url 'inviter_amis' id=groupe.id_group %}">Inviter des amis</a></li>
     {% endfor %}
   </ul>
 {% endblock %}
