@@ -6,6 +6,7 @@ from django.contrib.auth import get_user_model as User
 from django.shortcuts import render, get_object_or_404, redirect
 from django.http import Http404
 from user.models import User
+from .models import Invitation
 
 
 
@@ -30,18 +31,25 @@ def creer_groupe(request):
         return redirect('liste_groupes')  # Rediriger vers la liste des groupes
     return render(request,  'FeatureAhmed/creer_groupe.html')
 
+
+
 @login_required
 def liste_groupes(request):
     groupes = GroupeEtude.objects.all()
     return render(request, 'FeatureAhmed/liste_groupes.html', {'groupes': groupes})
 
 
+
+
 @login_required
-def inviter_amis(request, groupe_id):
+def inviter_amis(request, id):
     try:
-        groupe = GroupeEtude.objects.get(pk=groupe_id)
+        groupe = GroupeEtude.objects.get(pk=id)
     except GroupeEtude.DoesNotExist:
         raise Http404("Le groupe n'existe pas.")
+
+    # Récupérer la liste des amis (utilisateurs) disponibles à inviter
+    amis = User.objects.exclude(pk=request.user.id).exclude(membresgroupe__groupe=groupe)
 
     if request.method == 'POST':
         amis_ids = request.POST.getlist('amis')
@@ -49,9 +57,15 @@ def inviter_amis(request, groupe_id):
         # Ajouter les amis au groupe avec le rôle 'user'
         for ami_id in amis_ids:
             ami = User.objects.get(pk=ami_id)
-            groupe.add_user(ami)
+
+            # Créer une invitation
+            Invitation.objects.create(groupe=groupe, invitant=request.user, invite=ami, statut='en_attente', droit_acces='contributor')
 
         return redirect('liste_groupes')
+
+    return render(request, 'FeatureAhmed/inviter_amis.html', {'groupe': groupe, 'amis': amis})
+
+
 
     # Récupérer les membres du groupe
     membres_du_groupe = MembresGroupe.objects.filter(groupe=groupe)
@@ -60,25 +74,17 @@ def inviter_amis(request, groupe_id):
     
     return render(request, 'FeatureAhmed/inviter_amis.html', {'groupe': groupe, 'amis': amis})
 
+@login_required
+def accepter_invitation(request, invitation_id):
+    invitation = get_object_or_404(Invitation, id=invitation_id, invite=request.user, statut='en_attente')
+    invitation.statut = 'accepte'
+    invitation.save()
+    # Implémentez la logique d'attribution des droits d'accès ici
+    return redirect('nom_de_la_vue_appropriee')
 
-# @login_required
-# def inviter_amis(request, groupe_id):
-#     try:
-#         groupe = GroupeEtude.objects.get(pk=groupe_id)
-#     except GroupeEtude.DoesNotExist:
-#         raise Http404("Le groupe n'existe pas.")
-
-#     if request.method == 'POST':
-#         amis_ids = request.POST.getlist('amis')
-        
-#         # Ajouter les amis au groupe avec le rôle 'user'
-#         for ami_id in amis_ids:
-#             ami = User.objects.get(pk=ami_id)
-#             MembresGroupe.objects.create(_user=ami, _groupe=groupe, _role_groupe='user')
-
-#         return redirect('liste_groupes')
-
-#     # Exclure les amis déjà dans le groupe
-#     amis = User.objects.exclude(membresgroupe__groupe=groupe)
-    
-#     return render(request, 'FeatureAhmed/inviter_amis.html', {'groupe': groupe, 'amis': amis})
+@login_required
+def refuser_invitation(request, invitation_id):
+    invitation = get_object_or_404(Invitation, id=invitation_id, invite=request.user, statut='en_attente')
+    invitation.statut = 'refuse'
+    invitation.save()
+    return redirect('nom_de_la_vue_appropriee')

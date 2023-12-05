@@ -71,7 +71,12 @@ class GroupeEtude(models.Model):
     
     @property
     def add_user(self, user):
-        MembresGroupe.objects.create(user=user, groupe=self, role_groupe='user')
+        MembresGroupe.objects.create(user=user, groupe=self)
+
+    @property
+    def get_nom_groupe(self):
+        return self.nom_groupe
+
 
 
 # User -- GroupeEtude : (M;N)
@@ -87,11 +92,21 @@ class MembresGroupe(models.Model):
     date_ajout = models.DateTimeField(auto_now_add=True)
     role_groupe = models.CharField(max_length=255, choices=ROLE_GROUPES)
 
+    @property
+    def  get_user(self):
+        return self._user
 
     @property
-    def add_user(self, user):
-        MembresGroupe.objects.create(user=user, groupe=self, role_groupe='user')
-    
+    def  get_groupe(self):
+        return self._groupe
+
+    @property
+    def  get_date_ajout(self):
+        return self._date_ajout
+
+    @property
+    def  get_role_groupe(self):
+        return self._role_groupe
 
     
 class Ressource(models.Model):
@@ -99,3 +114,13 @@ class Ressource(models.Model):
     description = models.CharField(max_length=255, blank=True, null=True)
     type = models.CharField(max_length=255)
     contenu = models.CharField(max_length=255, blank=True, null=True)
+    
+class Invitation(models.Model):
+    groupe = models.ForeignKey(GroupeEtude, on_delete=models.CASCADE)
+    invitant = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='invitations_envoyees')
+    invite = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='invitations_recues')
+    statut = models.CharField(max_length=20, choices=[('en_attente', 'En attente'), ('accepte', 'Accepté'), ('refuse', 'Refusé')])
+
+    # Ajoutez un champ pour le rôle dans le groupe
+    droit_acces = models.CharField(max_length=20, choices=[('admin', 'Admin'), ('contributor', 'Contributor'), ('lecteur', 'Lecteur')])
+
