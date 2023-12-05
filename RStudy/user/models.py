@@ -13,7 +13,7 @@ class User( AbstractUser):
         ('enseignant', 'Enseignant'),
     )
     
-    username = None
+    username = models.CharField(max_length=255)
     
     _sexe_f = models.BooleanField(blank=True, null=True)
     _date_naissance = models.DateField(blank=True, null=True)

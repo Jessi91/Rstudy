@@ -1,0 +1,31 @@
+<!-- school/templates/test_template.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test Template</title>
+</head>
+<body>
+
+    <h1>Liste des Formations</h1>
+    <ul>
+        {% for formation in formations %}
+            <li>{{ formation.nom }} - {{ formation.type }}</li>
+        {% endfor %}
+    </ul>
+
+    <h1>Liste des Matières</h1>
+    <ul>
+        {% for matiere in matieres %}
+            <li>{{ matiere.nom }} - {{ matiere.description }}</li>
+        {% endfor %}
+    </ul>
+
+    <h1>Liste des Enseignements</h1>
+    <ul>
+        {% for enseignement in enseignements %}
+            <li>{{ enseignement.get_professeur }} enseigne {{ enseignement.get_matiere }} au groupe TD {{ enseignement.get_groupe_td }}</li>
+        {% endfor %}
+    </ul>
+
+</body>
+</html>
