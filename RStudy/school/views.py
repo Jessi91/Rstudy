@@ -1,7 +1,9 @@
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 from django.http import HttpResponse
 from django.template import loader
-from .models import Formation, Matiere, Enseignement
+
+from school.form import EspacePersonnelForm
+from .models import EspacePersonnel, Formation, Matiere, Enseignement
 from django.contrib.auth.models import User
 from user.models import User
 from home.models import Formation, Enseignement, Matiere
@@ -52,3 +54,18 @@ def test_view(request):
     }
 
     return render(request, 'school/test_template.html', context)
+
+
+#@login_required
+def espace_personnel(request):
+    espace_personnel, created = EspacePersonnel.objects.get_or_create(user=request.user)
+
+    if request.method == 'POST':
+        form = EspacePersonnelForm(request.POST, instance=espace_personnel)
+        if form.is_valid():
+            form.save()
+            return redirect('espace_personnel')
+    else:
+        form = EspacePersonnelForm(instance=espace_personnel)
+
+    return render(request, 'school/espace_personnel.html', {'form': form})

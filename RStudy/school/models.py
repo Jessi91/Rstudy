@@ -4,6 +4,7 @@ from django.db import models
 from django.contrib.auth.models import AbstractUser
 import uuid
 from django.conf import settings
+from user.models import User
 
 # from RStudy.home.models import Enseignement, Matiere, MatiereFormation
 
@@ -31,3 +32,10 @@ class Formation(models.Model):
         enseignement = Enseignement.objects.create(_professeur=professeur, _matiere=matiere, _groupe_td=groupe_td)
         return enseignement
 
+
+class EspacePersonnel(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    dashboard = models.TextField(blank=True, null=True)
+    calendrier = models.TextField(blank=True, null=True)
+    notes = models.TextField(blank=True, null=True)
+    # Ajoutez d'autres champs selon vos besoins
