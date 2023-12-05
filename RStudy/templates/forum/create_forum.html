@@ -1,0 +1,8 @@
+{% block content %}
+  <h2>Créer un nouveau forum</h2>
+  <form method="post" action="{% url 'create_forum' %}">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Créer le forum</button>
+  </form>
+{% endblock %}
