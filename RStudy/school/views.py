@@ -10,6 +10,11 @@ from home.models import Formation, Enseignement, Matiere
 #from school.models import Formation
 
 
+from django.http import JsonResponse
+from .models import Evenement
+
+
+
 
 
 def school(request):
@@ -69,3 +74,13 @@ def espace_personnel(request):
         form = EspacePersonnelForm(instance=espace_personnel)
 
     return render(request, 'school/espace_personnel.html', {'form': form})
+
+
+
+def evenements_api(request):
+    evenements = Evenement.objects.all()
+
+    # Sérialisez les événements en JSON
+    serialized_events = [{'title': event.titre, 'start': event.date_debut.isoformat(), 'end': event.date_fin.isoformat()} for event in evenements]
+
+    return JsonResponse(serialized_events, safe=False)

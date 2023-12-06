@@ -39,3 +39,16 @@ class EspacePersonnel(models.Model):
     calendrier = models.TextField(blank=True, null=True)
     notes = models.TextField(blank=True, null=True)
     # Ajoutez d'autres champs selon vos besoins
+
+
+
+class Evenement(models.Model):
+    titre = models.CharField(max_length=255)
+    description = models.TextField(blank=True, null=True)
+    date_debut = models.DateTimeField()
+    date_fin = models.DateTimeField()
+    createur = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.titre
+
