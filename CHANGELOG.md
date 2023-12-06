@@ -6,9 +6,17 @@ All notable changes to this project will be documented in this file.
 
 ## [0.3] 
 
-- Inviter des amis 
 
 ### Added
+- Inviter des amis 
+- Accepter / refuser l'invitation
+- Gestion d'un forum 
+- Gestion des utilisateurs dans l'espace admin
+
+### Removed
+
+### Fixed
+- Ajout d'un nouveau topic dans la page home
 
 ## [0.2.1] - 22-11-2023
 
