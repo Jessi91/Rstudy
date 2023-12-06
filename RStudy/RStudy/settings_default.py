@@ -39,7 +39,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'home',
     'user',
-    'forum',
 ]
 
 MIDDLEWARE = [ 
@@ -79,11 +78,15 @@ WSGI_APPLICATION = 'RStudy.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
+        # DataBase Name
         'NAME': 'rstudy',
+
         'USER': 'root',
         'HOST' : 'localhost',
         'PORT' : '3306',
         
+        # Your password
+        'PASSWORD' : '',
     }
 }
 
