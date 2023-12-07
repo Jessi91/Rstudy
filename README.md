@@ -1,4 +1,4 @@
-### RStudy    [![Build Status](https://app.travis-ci.com/Jessi91/Rstudy.svg?token=L98WEBS8FGkweyEqUq6x&branch=main)](https://app.travis-ci.com/Jessi91/Rstudy) [![License](https://img.shields.io/github/licensJessi91/Rstudy.svg?style=flat-square)](LICENSE)
+### RStudy    [![Build Status](https://app.travis-ci.com/Jessi91/Rstudy.svg?token=L98WEBS8FGkweyEqUq6x&branch=main)](https://app.travis-ci.com/Jessi91/Rstudy) [![License](https://img.shields.io/github/license/Jessi91/Rstudy.svg?style=flat-square)](LICENSE)
 
 <!-- ### RStudy    [![Build Status](https://https://img.shields.io/travis/com/Jessi91/Rstudy.svg?token=L98WEBS8FGkweyEqUq6x&branch=main)](https://travis-ci.com/github/Jessi91/Rstudy) -->
 
