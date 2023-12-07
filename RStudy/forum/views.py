@@ -1,7 +1,8 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
-from .models import Forum
+from .models import Forum, Thread
 from .forms import ForumForm
+
 
 @login_required
 def create_forum(request):
@@ -48,3 +49,14 @@ def delete(request, id):
     forum = Forum.objects.get(id_forum=id)  
     forum.delete()  
     return redirect("show_forum") 
+
+# Messages
+
+
+@login_required
+def messages_page(request):
+    threads = Thread.objects.by_user(user=request.user).prefetch_related('chatmessage_thread').order_by('timestamp')
+    context = {
+        'Threads': threads
+    }
+    return render(request, 'messages/messages.html', context)

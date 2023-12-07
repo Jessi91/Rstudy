@@ -39,6 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'home',
     'user',
+    'forum',
+    'channels',
 ]
 
 MIDDLEWARE = [ 
@@ -69,7 +71,8 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'RStudy.wsgi.application'
+# WSGI_APPLICATION = 'RStudy.wsgi.application'
+ASGI_APPLICATION = 'RStudy.asgi.application'
 
 
 # Database
