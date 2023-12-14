@@ -1,12 +1,22 @@
 ### RStudy    [![Build Status](https://app.travis-ci.com/Jessi91/Rstudy.svg?token=L98WEBS8FGkweyEqUq6x&branch=main)](https://app.travis-ci.com/Jessi91/Rstudy) <!-- [![License](https://img.shields.io/github/license/Jessi91/Rstudy.svg?style=flat-square)](LICENSE) -->
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/Jessi91/Rstudy/edit/main/LICENSE)
 
-<!-- ![GitHub tag (latest by date)](https://img.shields.io/github/tag/Jessi91/Rstudy/releases/tag/0.3) -->
 
-![GitHub release (by tag)](https://img.shields.io/github/downloads/Jessi91/Rstudy/releases/tag/v0.3)
-
+[![Latest Release](https://shields.io/github/release/Jessi91/Rstudy.svg)](https://github.com/Jessi91/Rstudy/releases/)
 
 
+[![GitHub tag (with filter)](https://shields.io./github/v/tag/Jessi91/Rstudy)](https://github.com/Jessi91/Rstudy/tag/)
+
+
+![GitHub contributors](https://shields.io./github/contributors/Jessi91/Rstudy)
+
+
+![GitHub Release Date - Published_At](https://shields.io./github/release-date/Jessi91/Rstudy)
+
+
+
+
+<!-- ### RStudy    [![Build Status](https://https://img.shields.io/travis/com/Jessi91/Rstudy.svg?token=L98WEBS8FGkweyEqUq6x&branch=main)](https://travis-ci.com/github/Jessi91/Rstudy) -->
 
 ## Configuration environnement
 - Activer Mysql
