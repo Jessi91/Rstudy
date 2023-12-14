@@ -1,4 +1,7 @@
-### RStudy    [![Build Status](https://app.travis-ci.com/Jessi91/Rstudy.svg?token=L98WEBS8FGkweyEqUq6x&branch=main)](https://app.travis-ci.com/Jessi91/Rstudy) <!-- [![License](https://img.shields.io/github/license/Jessi91/Rstudy.svg?style=flat-square)](LICENSE) -->
+### RStudy   
+
+[![Django CI](https://github.com/Jessi91/Rstudy/actions/workflows/django.yml/badge.svg)](https://github.com/Jessi91/Rstudy/actions/workflows/django.yml)
+<!-- [![Build Status](https://app.travis-ci.com/Jessi91/Rstudy.svg?token=L98WEBS8FGkweyEqUq6x&branch=main)](https://app.travis-ci.com/Jessi91/Rstudy) -->
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/Jessi91/Rstudy/edit/main/LICENSE)
 
 

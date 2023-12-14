@@ -25,6 +25,11 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         pip install -r requirements.txt
+    - name: Create Database Migrations
+      run: |
+        python RStudy/manage.py makemigrations
     - name: Run Tests
       run: |
-        python RStudy/manage.py test
+        python RStudy/manage.py test home --settings=RStudy.settings_ci
+        python RStudy/manage.py test forum --settings=RStudy.settings_ci
+        python RStudy/manage.py test user --settings=RStudy.settings_ci

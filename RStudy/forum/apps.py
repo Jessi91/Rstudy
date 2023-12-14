@@ -3,6 +3,6 @@ from django.apps import AppConfig
 
 class ForumConfig(AppConfig):
     """
-    Defines Home app configuration
+    Defines forum app configuration
     """
     name = 'forum'
