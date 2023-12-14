@@ -1,5 +1,6 @@
 from django.test import TestCase
-from .models import Forum, ParticipationForum, User
+from .models import Forum, ParticipationForum
+from django.contrib.auth import get_user_model as User
 
 class ForumTestCase(TestCase):
     def setUp(self):
