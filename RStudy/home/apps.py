@@ -6,6 +6,6 @@ from django.apps import AppConfig
 
 class HomeConfig(AppConfig):
     """
-    Defines task app configuration
+    Defines Home app configuration
     """
     name = 'home'
