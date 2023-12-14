@@ -6,7 +6,6 @@
 
 <!-- ![GitHub tag (latest by date)](https://img.shields.io/github/tag/Jessi91/Rstudy/releases/tag/0.3) -->
 
-![GitHub release (by tag)](https://img.shields.io/github/downloads/Jessi91/Rstudy/releases/tag/v0.3)
 
 
 
