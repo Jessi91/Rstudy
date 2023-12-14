@@ -8,5 +8,5 @@ urlpatterns = [
     re_path(r'^update/(?P<id>[\w-]+)/$', views.update, name='update_forum'),  
     re_path(r'^delete/(?P<id>[\w-]+)/$', views.delete, name='delete_forum'), 
     # Messages
-    path("", views.messages_page)
+    path("", views.messages_page),
 ]
