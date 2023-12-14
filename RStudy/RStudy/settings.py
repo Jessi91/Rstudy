@@ -42,9 +42,9 @@ INSTALLED_APPS = [
     'user.apps.AppConfig',
     'RStudy.forum',
     # 'RStudy.notes',
-    'rest_framework',
-    'rest_framework_simplejwt',
-    'rest_auth',
+    # 'rest_framework',
+    # 'rest_framework_simplejwt',
+    # 'rest_auth',
 ]
 
 REST_FRAMEWORK = {
