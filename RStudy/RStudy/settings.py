@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # 'RStudy.home',
     'RStudy.home',
-    'RStudy.user',
+    'user.apps.AppConfig',
     'RStudy.forum',
     # 'RStudy.notes',
     'rest_framework',
