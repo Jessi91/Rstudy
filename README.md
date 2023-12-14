@@ -5,6 +5,7 @@
 [![Latest Release](https://shields.io/github/release/Jessi91/Rstudy.svg)](https://github.com/Jessi91/Rstudy/releases/)
 
 
+
 [![GitHub tag (with filter)](https://shields.io./github/v/tag/Jessi91/Rstudy)](https://github.com/Jessi91/Rstudy/tag/)
 
 
@@ -12,6 +13,9 @@
 
 
 ![GitHub Release Date - Published_At](https://shields.io./github/release-date/Jessi91/Rstudy)
+
+
+![PyPI - Python Version](https://shields.io./pypi/pyversions/Django)
 
 
 
