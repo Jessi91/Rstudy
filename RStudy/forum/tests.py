@@ -1,9 +1,12 @@
 from django.test import TestCase
 from .models import Forum, ParticipationForum
-from django.contrib.auth import get_user_model as User
+from django.contrib.auth import get_user_model
 
 class ForumTestCase(TestCase):
     def setUp(self):
+        # Obtention du modèle utilisateur
+        User = get_user_model()
+
         # Création d'un utilisateur
         self.user = User.objects.create_user(email='test@example.com', password='password', role='etudiant')
 
