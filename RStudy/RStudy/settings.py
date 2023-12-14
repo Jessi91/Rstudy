@@ -37,13 +37,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    #'home',
-    #'RStudy.user',
-    #'RStudy.forum',
-    'home.apps.HomeConfig'
-    'user.apps.HomeConfig'
-    'forum.apps.HomeConfig'
-    #'RStudy.notes',
+    'RStudy.home',
+    'RStudy.user',
+    'RStudy.forum',
+    # 'RStudy.notes',
     'rest_framework',
     'rest_framework_simplejwt',
     'rest_auth',
