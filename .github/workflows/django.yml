@@ -27,6 +27,6 @@ jobs:
         pip install -r requirements.txt
     - name: Run Tests
       run: |
-        python RStudy/manage.py test home
-        python RStudy/manage.py test forum
-        python RStudy/manage.py test user
+        python RStudy/manage.py test home --settings=RStudy.settings_ci
+        python RStudy/manage.py test forum --settings=RStudy.settings_ci
+        python RStudy/manage.py test user --settings=RStudy.settings_ci
