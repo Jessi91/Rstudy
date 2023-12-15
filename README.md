@@ -27,7 +27,14 @@
 [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=Jessi91_Rstudy&metric=coverage)](https://sonarcloud.io/summary/new_code?id=Jessi91_Rstudy)
 
 
+[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=Jessi91_Rstudy&metric=coverage)](https://sonarcloud.io/summary/new_code?id=Jessi91_Rstudy)
 
+[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=Jessi91_Rstudy&metric=coverage)](https://sonarcloud.io/summary/new_code?id=Jessi91_Rstudy)
+
+[![Coverage](https://img.shields.io/badge/coverage-90%25-brightgreen.svg)](https://sonarcloud.io/summary/new_code?id=Jessi91_Rstudy)
+
+[![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=Jessi91_Rstudy&metric=reliability_rating)](https://sonarcloud.io/summary/new_code?id=Jessi91_Rstudy)
+[![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=Jessi91_Rstudy&metric=security_rating)](https://sonarcloud.io/summary/new_code?id=Jessi91_Rstudy)
 
 <!-- ### RStudy    [![Build Status](https://https://img.shields.io/travis/com/Jessi91/Rstudy.svg?token=L98WEBS8FGkweyEqUq6x&branch=main)](https://travis-ci.com/github/Jessi91/Rstudy) -->
 
