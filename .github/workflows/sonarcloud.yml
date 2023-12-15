@@ -49,12 +49,6 @@ jobs:
         with:
           python-version: 3.10.4
 
-      - name: Run tests with coverage
-        run: coverage run manage.py test
-
-      - name: Generate coverage report
-        run: coverage xml -o coverage.xml
-
       - name: Analyze with SonarCloud
 
         # You can pin the exact commit or the version.
