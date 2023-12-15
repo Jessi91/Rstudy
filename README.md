@@ -10,6 +10,8 @@
 
 
 
+
+
 [![GitHub tag (with filter)](https://shields.io./github/v/tag/Jessi91/Rstudy)](https://github.com/Jessi91/Rstudy/tag/)
 
 
@@ -18,8 +20,11 @@
 
 ![GitHub Release Date - Published_At](https://shields.io./github/release-date/Jessi91/Rstudy)
 
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=Jessi91_Rstudy&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=Jessi91_Rstudy)
 
-![PyPI - Python Version](https://shields.io./pypi/pyversions/Django)
+[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=Jessi91_Rstudy&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=Jessi91_Rstudy)
+
+[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=Jessi91_Rstudy&metric=coverage)](https://sonarcloud.io/summary/new_code?id=Jessi91_Rstudy)
 
 
 
