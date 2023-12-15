@@ -1,37 +1,17 @@
 ### RStudy   
 
 [![Django CI](https://github.com/Jessi91/Rstudy/actions/workflows/django.yml/badge.svg)](https://github.com/Jessi91/Rstudy/actions/workflows/django.yml)
-<!-- [![Build Status](https://app.travis-ci.com/Jessi91/Rstudy.svg?token=L98WEBS8FGkweyEqUq6x&branch=main)](https://app.travis-ci.com/Jessi91/Rstudy) -->
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/Jessi91/Rstudy/edit/main/LICENSE)
-
-
 [![Latest Release](https://shields.io/github/release/Jessi91/Rstudy.svg)](https://github.com/Jessi91/Rstudy/releases/)
-
-
-
-
-
-
 [![GitHub tag (with filter)](https://shields.io./github/v/tag/Jessi91/Rstudy)](https://github.com/Jessi91/Rstudy/tag/)
-
-
 ![GitHub contributors](https://shields.io./github/contributors/Jessi91/Rstudy)
-
-
 ![GitHub Release Date - Published_At](https://shields.io./github/release-date/Jessi91/Rstudy)
-
+[![Coverage](https://img.shields.io/badge/coverage-50%25-brightgreen.svg)](https://sonarcloud.io/summary/new_code?id=Jessi91_Rstudy)
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=Jessi91_Rstudy&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=Jessi91_Rstudy)
-
 [![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=Jessi91_Rstudy&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=Jessi91_Rstudy)
 
-[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=Jessi91_Rstudy&metric=coverage)](https://sonarcloud.io/summary/new_code?id=Jessi91_Rstudy)
 
 
-[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=Jessi91_Rstudy&metric=coverage)](https://sonarcloud.io/summary/new_code?id=Jessi91_Rstudy)
-
-[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=Jessi91_Rstudy&metric=coverage)](https://sonarcloud.io/summary/new_code?id=Jessi91_Rstudy)
-
-[![Coverage](https://img.shields.io/badge/coverage-90%25-brightgreen.svg)](https://sonarcloud.io/summary/new_code?id=Jessi91_Rstudy)
 
 [![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=Jessi91_Rstudy&metric=reliability_rating)](https://sonarcloud.io/summary/new_code?id=Jessi91_Rstudy)
 [![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=Jessi91_Rstudy&metric=security_rating)](https://sonarcloud.io/summary/new_code?id=Jessi91_Rstudy)
