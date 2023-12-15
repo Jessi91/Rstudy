@@ -64,7 +64,7 @@ jobs:
             # mandatory
             -Dsonar.projectKey=jessi91
             -Dsonar.organization=Jessi91
-            -Dsonar.branch.name=main
+            -Dsonar.branch.name=main -X
             -Dsonar.login=${{ env.SONAR_TOKEN }}
             -Dsonar.python.coverage.reportPaths=coverage.xml
 
