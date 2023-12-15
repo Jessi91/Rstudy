@@ -43,6 +43,21 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.10.4
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run tests with coverage
+        run: coverage run manage.py test
+
+      - name: Generate coverage report
+        run: coverage xml -o coverage.xml
+
       - name: Analyze with SonarCloud
 
         # You can pin the exact commit or the version.
@@ -59,6 +74,7 @@ jobs:
             -Dsonar.projectKey=jessi91
             -Dsonar.organization=Jessi91
             -Dsonar.login=${{ env.SONAR_TOKEN }}
+            -Dsonar.python.coverage.reportPaths=coverage.xml
 
             # Comma-separated paths to directories containing main source files.
             #-Dsonar.sources= # optional, default is project base directory
