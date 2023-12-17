@@ -31,6 +31,8 @@ ALLOWED_HOSTS = []
 
 # Application definition
 INSTALLED_APPS = [
+    'daphne',
+    'channels',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -69,8 +71,8 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'RStudy.wsgi.application'
-
+# WSGI_APPLICATION = 'RStudy.wsgi.application'
+ASGI_APPLICATION = 'RStudy.asgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases

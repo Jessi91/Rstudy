@@ -5,7 +5,7 @@
 __pycache__
 db.sqlite3
 media
-RStudy/settings.py
+RStudy/RStudy/settings.py
 **/migrations/*
 # Backup files # 
 *.bak 

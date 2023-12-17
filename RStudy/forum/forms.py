@@ -1,5 +1,5 @@
 from django import forms
-from .models import Forum
+from .models import *
 
 class ForumForm(forms.ModelForm):
     class Meta:
@@ -10,4 +10,17 @@ class ForumForm(forms.ModelForm):
             'description': 'Description du forum',
             'ouvert': 'Ouvert',
             'participants': 'Participants',
+        }
+
+class ParticipationForumForm(forms.ModelForm):
+    class Meta:
+        model = ParticipationForum
+        fields = ['titre_msg', 'contenu']
+        widgets = {
+            'titre_msg': forms.TextInput(attrs={'placeholder': 'Titre du message'}),
+            'contenu': forms.Textarea(attrs={'rows': 4, 'placeholder': 'Contenu du message'}),
+        }
+        labels = {
+            'titre_msg': 'Titre',
+            'contenu': 'Message',
         }
