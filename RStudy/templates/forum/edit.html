@@ -1,3 +1,5 @@
+{%extends 'base.html' %}
+
 {% block content %}
   <h2>Modifier le forum</h2>
   <form method="post" action="{% url 'update_forum' id=forum.id_forum %}">
