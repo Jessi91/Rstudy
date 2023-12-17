@@ -45,10 +45,12 @@ INSTALLED_APPS = [
     'home.apps.HomeConfig',
     'user.apps.UserConfig',
     'forum.apps.ForumConfig',
+    'notes.apps.NotesConfig',
     # 'RStudy.notes',
-    # 'rest_framework',
-    # 'rest_framework_simplejwt',
-    # 'rest_auth',
+    'rest_framework',
+    'rest_framework_simplejwt',
+    'rest_auth',
+    'corsheaders',
 ]
 
 REST_FRAMEWORK = {
@@ -81,8 +83,12 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     
 ]
+
+
+CORS_ALLOW_ALL_ORIGINES = True
 
 ROOT_URLCONF = 'RStudy.urls'
 
@@ -161,6 +167,7 @@ STATIC_URL = 'static/'
 STATICFILES_DIRS = [
     BASE_DIR / "static",
 ]
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field

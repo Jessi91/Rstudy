@@ -1,0 +1,24 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Application de Notes</title>
+    <link rel="stylesheet" href="{% static 'notes/styles.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h1>Mes Notes</h1>
+
+        <form id="add-note-form" class="note-form">
+            <input type="text" id="new-note-title" placeholder="Titre de la note" required>
+            <textarea id="new-note-content" placeholder="Contenu de la note"></textarea>
+            <button type="submit">Ajouter une Note</button>
+        </form>
+
+        <div id="notes-list" class="notes-list"></div>
+    </div>
+
+    <script src="{% static 'js/notes/script.js' %}"></script>
+</body>
+</html>

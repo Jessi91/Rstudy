@@ -1,13 +1,26 @@
 
 from django.urls import path
 
-from .views import sendData
+from .views import LabelCreateView, NoteDetailView, NoteListCreateView, notes_view
+from notes import views
 
 # from .views import ContentCreateView, ContentUpdateView, LabelCreateView, LabelListView, LabelUpdateView, MonTokenObtainPairView, NoteListCreateView, NoteRetrieveUpdateView, SettingAddCollaborator, SettingLabelCreate, SettingUpdateView
 
+
 urlpatterns = [
 
-    path("notes/", sendData)
+    # path('mes-notes/', views.notes_view, name='notes-view'),
+    path('', NoteListCreateView.as_view(), name='note-list-create'),
+    path('<int:pk>/labels/', LabelCreateView.as_view(), name='label-create'),
+    # path('notes/', NoteListCreateView.as_view(), name='note-list-create'),
+    path('<int:pk>/', NoteDetailView.as_view(), name='note-detail'),
+    path('mes-notes/', notes_view, name='mes-notes'),
+   
+
+
+    
+
+    # path("notes/", sendData)
     #path('api/notes/', NoteListCreateView.as_view(), name='note-list-create'),
 
     # path('ma_vue_protégée/', NoteListCreateView.as_view(), name='NoteListCreateView'),

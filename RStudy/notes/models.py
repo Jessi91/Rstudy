@@ -4,21 +4,33 @@ from django.contrib.auth import get_user_model
 
 from django.conf import settings
 
-
-
-class Label(models.Model):
-    text = models.CharField(max_length=150)
-
-    def __str__(self):
-        return ' Label ' + str(self.pk)
-
+from django.utils.timezone import now
 
 class Note(models.Model):
     title = models.CharField(max_length=950, blank=True, null=True)
     users = models.ManyToManyField(to=get_user_model(), through='Setting')
+    contents = models.ManyToManyField('Content', related_name='notes', blank=True)
+    images = models.ManyToManyField('Image', related_name='notes', blank=True)
+    reminder = models.OneToOneField(
+        'Reminder', 
+        on_delete=models.SET_NULL, 
+        null=True, 
+        blank=True, 
+        related_name='+'
+    )
+    created_at = models.DateTimeField(auto_now_add=True)  
+    updated_at = models.DateTimeField(auto_now=True)      # Ajouté
 
     def __str__(self):
-        return ' Note ' + str(self.pk)
+        return f'Note {self.pk}'
+
+class Label(models.Model):
+    text = models.CharField(max_length=150)
+    notes = models.ManyToManyField('Note', related_name='labels', blank=True)
+
+    def __str__(self):
+        return ' Label ' + str(self.pk)
+  
 
 
 class Setting(models.Model):
@@ -114,7 +126,10 @@ class Reminder(models.Model):
     date_and_time = models.DateTimeField(default=timezone.now)
     # TODO: add costume repeat schedule
     repeat = models.CharField(max_length=1, choices=REPEAT_CHOICES, default=no_repeat)
-    note = models.OneToOneField(to=Note, on_delete=models.CASCADE)
-
+    note = models.OneToOneField(
+        'Note', 
+        on_delete=models.CASCADE, 
+        related_name='+'
+    )
     def __str__(self):
         return str(self.note) + ' Reminder ' + str(self.pk)
