@@ -1,8 +1,12 @@
+{% extends 'base.html' %}
+
 {% block content %}
-  <h2>Créer un nouveau forum</h2>
-  <form method="post" action="{% url 'create_forum' %}">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Créer le forum</button>
-  </form>
+<div class="container mt-4">
+    <h2>Créer un nouveau forum</h2>
+    <form method="post" action="{% url 'create_forum' %}">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">Créer le forum</button>
+    </form>
+</div>
 {% endblock %}

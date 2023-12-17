@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Détails du Forum</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Vous pouvez ajouter ici des styles personnalisés */
+        .message-card {
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 15px;
+            margin-bottom: 10px;
+        }
+        .message-header {
+            font-weight: bold;
+        }
+        .message-date {
+            color: #666;
+            font-size: 0.8em;
+        }
+    </style>
+</head>
+<body>
+<div class="container mt-4">
+    <h1>{{ forum.nom }}</h1>
+    <p>{{ forum.description }}</p>
+
+    <!-- Affichage des messages -->
+    <div>
+        <h2>Messages</h2>
+        {% if messages %}
+            {% for message in messages %}
+                <div class="message-card">
+                    <div class="message-header">
+                        {{ message.user.last_name }} {{ message.user.first_name }}
+                        <span class="message-date">- {{ message.date|date:"d M Y H:i" }}</span>
+                    </div>
+                    <div class="message-content">
+                        {{ message.contenu }}
+                    </div>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p>Aucun message pour ce forum.</p>
+        {% endif %}
+    </div>
+    <!-- Ici, vous pouvez ajouter le formulaire pour envoyer des messages -->
+</div>
+
+<!-- Bootstrap JS et dépendances (optionnel, pour des fonctionnalités JavaScript) -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>
