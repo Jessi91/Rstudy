@@ -1,7 +1,7 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
-from .models import Forum
-from .forms import ForumForm
+from .models import *
+from .forms import *
 
 @login_required
 def create_forum(request):
@@ -48,3 +48,25 @@ def delete(request, id):
     forum = Forum.objects.get(id_forum=id)  
     forum.delete()  
     return redirect("show_forum") 
+
+def forum_detail(request, id):
+    forum = get_object_or_404(Forum, id_forum=id)
+    # Récupérer les messages liés à ce forum
+    messages = ParticipationForum.objects.filter(forum=forum)
+
+    return render(request, 'forum/forum_detail.html', {'forum': forum, 'messages': messages})
+
+def send_message(request, id):
+    forum = get_object_or_404(Forum, id_forum=id)
+    if request.method == 'POST':
+        form = ParticipationForumForm(request.POST)
+        if form.is_valid():
+            participation = form.save(commit=False)
+            participation.user = request.user
+            participation.forum = forum
+            participation.save()
+            return redirect('forum_detail', id=id)
+    else:
+        form = ParticipationForumForm()
+
+    return render(request, 'forum/send_message.html', {'form': form, 'forum': forum})
