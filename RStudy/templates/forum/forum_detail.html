@@ -20,30 +20,34 @@
 {% endblock %}
 
 {% block content %}
-    <!-- Contenu spécifique à la page -->
-    <div class="container mt-4">
-        <h1>{{ forum.nom }}</h1>
-        <p>{{ forum.description }}</p>
+<div class="container mt-4">
+    <h1>{{ forum.nom }}</h1>
+    <p>{{ forum.description }}</p>
+    <p>Créé par : {{ createur.first_name }} {{ createur.last_name }}</p>
 
-        <!-- Affichage des messages -->
-        <div>
-            <h2>Messages</h2>
-            {% if messages %}
-                {% for message in messages %}
-                    <div class="message-card">
-                        <div class="message-header">
-                            {{ message.user.last_name }} {{ message.user.first_name }}
-                            <span class="message-date">- {{ message.date|date:"d M Y H:i" }}</span>
-                        </div>
-                        <div class="message-content">
-                            {{ message.contenu }}
-                        </div>
+    <!-- Affichage des messages -->
+    <div>
+        <h2>Messages</h2>
+        {% if messages %}
+            {% for message in messages %}
+                <div class="message-card">
+                    <div class="message-header">
+                        {{ message.user.last_name }} {{ message.user.first_name }}
+                        <span class="message-date">- {{ message.date|date:"d M Y H:i" }}</span>
                     </div>
-                {% endfor %}
-            {% else %}
-                <p>Aucun message pour ce forum.</p>
-            {% endif %}
-        </div>
-        <!-- Formulaire pour envoyer des messages, si nécessaire -->
+                    <div class="message-content">
+                        {{ message.contenu }}
+                    </div>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p>Aucun message pour ce forum.</p>
+        {% endif %}
     </div>
+
+    <!-- Bouton pour écrire un message, visible uniquement par les utilisateurs connectés -->
+    {% if user.is_authenticated %}
+        <a href="{% url 'send_message' id=forum.id_forum %}" class="btn btn-primary mt-2">Écrire un Message</a>
+    {% endif %}
+</div>
 {% endblock %}

@@ -1,26 +1,26 @@
 from django import forms
-from .models import *
+from .models import Forum, ParticipationForum
 
 class ForumForm(forms.ModelForm):
     class Meta:
         model = Forum
-        fields = ['nom', 'description', 'ouvert', 'participants']
+        fields = ['nom', 'description', 'ouvert']
         labels = {
             'nom': 'Nom du forum',
             'description': 'Description du forum',
-            'ouvert': 'Ouvert',
-            'participants': 'Participants',
+            'ouvert': 'Ouvert'
+        }
+        widgets = {
+            'description': forms.Textarea(attrs={'rows': 5, 'cols': 40}),  # Augmenter les dimensions ici
         }
 
 class ParticipationForumForm(forms.ModelForm):
     class Meta:
         model = ParticipationForum
-        fields = ['titre_msg', 'contenu']
+        fields = ['contenu']
         widgets = {
-            'titre_msg': forms.TextInput(attrs={'placeholder': 'Titre du message'}),
             'contenu': forms.Textarea(attrs={'rows': 4, 'placeholder': 'Contenu du message'}),
         }
         labels = {
-            'titre_msg': 'Titre',
             'contenu': 'Message',
         }
