@@ -1,12 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
+{% extends 'base.html' %}
+
+{% block head %}
     <title>Détails du Forum</title>
-    <!-- Bootstrap CSS -->
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
     <style>
-        /* Vous pouvez ajouter ici des styles personnalisés */
         .message-card {
             border: 1px solid #ddd;
             border-radius: 5px;
@@ -21,11 +17,13 @@
             font-size: 0.8em;
         }
     </style>
-</head>
-<body>
+{% endblock %}
+
+{% block content %}
 <div class="container mt-4">
     <h1>{{ forum.nom }}</h1>
     <p>{{ forum.description }}</p>
+    <p>Créé par : {{ createur.first_name }} {{ createur.last_name }}</p>
 
     <!-- Affichage des messages -->
     <div>
@@ -46,12 +44,15 @@
             <p>Aucun message pour ce forum.</p>
         {% endif %}
     </div>
-    <!-- Ici, vous pouvez ajouter le formulaire pour envoyer des messages -->
-</div>
-
-<!-- Bootstrap JS et dépendances (optionnel, pour des fonctionnalités JavaScript) -->
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-</body>
-</html>
+    {% if user.is_authenticated %}
+        <h2>Envoyer un message</h2>
+        <form action="{% url 'send_message' forum.id_forum %}" method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="contenu">Message</label>
+                <textarea class="form-control" id="contenu" name="contenu" rows="4" placeholder="Écrivez votre message ici"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Envoyer</button>
+        </form>
+    {% endif %}
+{% endblock %}
