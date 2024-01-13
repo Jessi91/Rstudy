@@ -2,7 +2,7 @@
 
 {% block content %}
   <h2>Modifier le forum</h2>
-  <form method="post" action="{% url 'update_forum' id=forum.id_forum %}">
+  <form method="post" action="{% url 'edit_forum' id=forum.id_forum %}">
     {% csrf_token %}
     
     {% for field in form %}

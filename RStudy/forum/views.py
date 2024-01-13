@@ -2,6 +2,8 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from .models import *
 from .forms import *
+from django.http import HttpResponseRedirect
+from django.urls import reverse
 
 @login_required
 def create_forum(request):
@@ -22,11 +24,6 @@ def show(request):
     forums = Forum.objects.all()
     return render(request, "forum/show.html", {'forums': forums, 'user': request.user})  
 
-@login_required
-def edit(request, id):
-    forum = Forum.objects.get(id_forum=id)
-    form = ForumForm(instance=forum)
-    return render(request, 'forum/edit.html', {'forum': forum, 'form': form})
 
 
 @login_required
@@ -52,20 +49,18 @@ def forum_detail(request, id):
     
     forum = get_object_or_404(Forum, id_forum=id)
     createur = forum.createur
-    return render(request, 'forum/forum_detail.html', {'forum': forum, 'createur': createur})
+    messages = ParticipationForum.objects.filter(forum=forum)
+    return render(request, 'forum/forum_detail.html', {'forum': forum, 'createur': createur, 'messages': messages})
 
-def send_message(request, id):
-    print(id)
-    forum = get_object_or_404(Forum, id_forum=id)
+@login_required
+def send_message(request, id_forum):
     if request.method == 'POST':
         form = ParticipationForumForm(request.POST)
         if form.is_valid():
             participation = form.save(commit=False)
-            participation.user = request.user  # Assigne l'utilisateur actuel
-            participation.forum = forum  # Assigne le forum actuel
+            participation.user = request.user
+            forum = get_object_or_404(Forum, id_forum=id_forum)
+            participation.forum = forum  # Assurez-vous de définir la valeur du forum
             participation.save()
-            return redirect('forum_detail', id=str(forum.id_forum))  # Redirection vers les détails du forum
-    else:
-        form = ParticipationForumForm()
 
-    return render(request, 'forum/send_message.html', {'form': form, 'forum': forum})
+        return redirect('forum_detail', id=id_forum)
