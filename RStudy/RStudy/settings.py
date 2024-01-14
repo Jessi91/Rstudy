@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'user.apps.UserConfig',
     'forum.apps.ForumConfig',
     'notes.apps.NotesConfig',
+    'promodoro.apps.PromodoroConfig',
     # 'RStudy.notes',
     'rest_framework',
     'rest_framework_simplejwt',
