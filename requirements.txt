@@ -5,3 +5,5 @@ djangorestframework==3.14.0
 djangorestframework-simplejwt==5.3.0
 channels==4.0.0
 daphne==4.0.0
+django-rest-auth==10.2.0
+djangorestframework
