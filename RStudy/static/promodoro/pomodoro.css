@@ -1,0 +1,45 @@
+/* pomodoro.css */
+
+#pomodoro-app {
+    max-width: 300px;
+    margin: 30px auto;
+    padding: 20px;
+    background: #fff;
+    text-align: center;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+#timer {
+    font-size: 3em;
+    margin-bottom: 20px;
+}
+
+button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1em;
+    cursor: pointer;
+    margin-right: 5px;
+}
+
+#start-timer {
+    background-color: #4CAF50;
+    color: white;
+}
+
+#stop-timer {
+    background-color: #f44336;
+    color: white;
+}
+
+button:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+}
+
+#session-progress {
+    font-size: 1.2em;
+    color: #666;
+}
