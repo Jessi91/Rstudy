@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block head %}
+    <meta charset="UTF-8">
+    <title>Django Quiz App - Quiz</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+{% endblock %}
+
+{% block content %}
+<div id="app" class="container mt-5">
+    <h1 class="text-center">Quiz du jour !</h1>
+
+    <div v-for="question in filteredQuestions" :key="question.uid" class="mb-4">
+        <h4>[[ question.question ]]</h4>
+        <div class="ml-3" v-for="answer in question.answer" :key="answer.uid">
+            <!-- Modification ici: 'radio' changé en 'checkbox' -->
+            <input type="checkbox" :id="'answer_' + answer.uid"
+                   v-model="answer.selected">
+            <label :for="'answer_' + answer.uid">[[ answer.answer ]]</label>
+        </div>
+    </div>
+
+    <!-- Bouton 'Terminé' ajouté ici -->
+    <button class="btn btn-primary" @click="submitQuiz">Terminé</button>
+
+    <!-- Résultats du quiz -->
+    <div v-if="showResults">
+        <h2>Résultats du Quiz</h2>
+        <p>Score: [[ score ]] / [[ totalScore ]]</p>
+        <div v-for="result in results" :key="result.question">
+            <h4>[[ result.question ]]</h4>
+            <p>Vos réponses: [[ result.userAnswers.join(', ') ]]</p>
+            <p>Réponses correctes: [[ result.correctAnswers.join(', ') ]]</p>
+            <p>Points pour cette question: [[ result.questionScore ]]</p>
+        </div>
+    </div>
+	
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue@3.0.0-rc.5/dist/vue.global.prod.js"></script>
+<script src="{% static 'js/quizApp/quizAppResult.js' %}"></script>
+
+{% endblock %}
