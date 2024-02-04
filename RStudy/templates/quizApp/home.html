@@ -8,7 +8,7 @@
           crossorigin="anonymous"> 
 
     <!-- Page title -->
-    <title>Django Quiz App</title> 
+    <title>RStudy Quiz App</title> 
 {% endblock %}
 
 {% block content %}
@@ -22,13 +22,13 @@
         <div class="col-md-6 mx-auto">
             <form action="" onsubmit="return redirectToQuizPage();">
                 <div class="form-group">
-                    <!-- Label for category selection -->
-                    <label for="">Selectionner une catégorie</label>
+                    <!-- Label for matiere selection -->
+                    <label for="">Selectionner une matière</label>
                     <!-- Ajoutez un identifiant unique à votre élément de sélection de catégorie -->
-                    <select name="category" id="categorySelect" class="form-control">
+                    <select name="matiere" id="matiereSelect" class="form-control">
                         <!-- Vos options de catégorie -->
-                        {% for category in categories %}
-                            <option value="{{ category.category_name }}">{{ category.category_name }}</option>
+                        {% for matiere in matieres %}
+                            <option value="{{ matiere.nom }}">{{ matiere.nom }}</option>
                         {% endfor %}
                     </select>
                 </div>
@@ -40,9 +40,9 @@
 
     <script>
         function redirectToQuizPage() {
-            const selectedCategory = document.getElementById('categorySelect').value;
-            if (selectedCategory) {
-                window.location.href = `/quizApp/quiz/?category=${selectedCategory}`;
+            const selectedMatiere = document.getElementById('matiereSelect').value;
+            if (selectedMatiere) {
+                window.location.href = `/quizApp/quiz/?matiere=${selectedMatiere}`;
             }
             return false;
         }

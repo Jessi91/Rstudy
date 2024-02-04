@@ -25,6 +25,8 @@ class Formation(models.Model):
     type = models.CharField(max_length=255, choices=FORMATION_CHOICES)
     duree_mois = models.IntegerField()
     responsable = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.PROTECT)
+    def __str__(self):
+        return self.nom
 
     
     
@@ -40,8 +42,10 @@ class Matiere(models.Model):
     id_matiere = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     nom = models.CharField(max_length=255)
     description = models.CharField(max_length=255, blank=True, null=True)
-    duree = models.TimeField()
+    duree = models.IntegerField()
     autres_informations = models.CharField(max_length=255, blank=True, null=True)
+    def __str__(self):
+        return self.nom
 
 # Enseignement -- Matiere : (M;N)
 class Enseignement(models.Model):
@@ -55,6 +59,14 @@ class MatiereFormation(models.Model):
     formation = models.ForeignKey(Formation, on_delete=models.PROTECT)
     matiere = models.ForeignKey(Matiere, on_delete=models.PROTECT)
     ects = models.FloatField(default=1)
+    
+    class Meta:
+        # Définir une contrainte d'unicité sur la combinaison de 'formation' et 'matiere'
+        unique_together = ('formation', 'matiere')
+
+    def __str__(self):
+        return f"{self.formation.nom} - {self.matiere.nom}"
+
 
 class Document(models.Model):
     id_doc = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)

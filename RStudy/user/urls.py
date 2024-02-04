@@ -9,4 +9,5 @@ urlpatterns = [
     path('profile/', user.views.readProfile, name='profile'),
     path('update/', user.views.update_profile, name='update_profile'),
     path('logout/', LogoutView.as_view(next_page='/'), name='logout'),
+    path('inscription-formation/', user.views.inscription_formation, name='inscription_formation'),
 ]

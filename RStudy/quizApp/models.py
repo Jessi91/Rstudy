@@ -2,6 +2,7 @@ from django.db import models
 import uuid 
 import random 
 from django.contrib.auth import get_user_model
+from home.models import Matiere
 
 User = get_user_model()
 
@@ -14,32 +15,26 @@ class BaseModel(models.Model):
 	class Meta: 
 		abstract = True
 
-class Category(BaseModel): 
 
-	category_name = models.CharField(max_length=100) 
-	
-	def __str__(self) -> str: 
-		return self.category_name 
-class Question(BaseModel): 
-	category = models.ForeignKey(Category, 
-								related_name='category', on_delete=
-								models.CASCADE) 
-	question = models.CharField(max_length=100) 
-	marks = models.IntegerField(default=5) 
-	
-	def __str__(self) -> str: 
-		return self.question 
+class Question(BaseModel):
+    matiere = models.ForeignKey(Matiere, related_name='questions', on_delete=models.CASCADE)  # Changement ici
+    question = models.CharField(max_length=100)
+    marks = models.IntegerField(default=5)
 
-	def get_answers(self): 
-		answer_objs = list(Answer.objects.filter(question=self)) 
-		data = [] 
-		random.shuffle(answer_objs) 
-		for answer_obj in answer_objs: 
-			data.append({ 
-				'answer': answer_obj.answer, 
-				'is_correct': answer_obj.is_correct 
-			}) 
-		return data 
+    def __str__(self) -> str:
+        return self.question
+
+    def get_answers(self):
+        answer_objs = list(Answer.objects.filter(question=self))
+        data = []
+        random.shuffle(answer_objs)
+        for answer_obj in answer_objs:
+            data.append({
+                'answer': answer_obj.answer,
+                'is_correct': answer_obj.is_correct
+            })
+        return data
+
 
 class Answer(BaseModel): 
 	question = models.ForeignKey(Question, 

@@ -60,3 +60,18 @@ def update_profile(request):
         form = forms.ReadUpdateForm(instance=user)
 
     return render(request, 'user/update_profil.html', {'form': form})
+
+
+
+@login_required
+def inscription_formation(request):
+    if request.method == 'POST':
+        form = forms.EnregistrementFormationForm(request.POST)
+        if form.is_valid():
+            enregistrement = form.save(commit=False)
+            enregistrement.user = request.user  # Définir l'utilisateur actuellement connecté comme l'utilisateur de l'enregistrement
+            enregistrement.save()
+            return redirect('nom_de_l_url_après_inscription')  # Redirigez vers une page appropriée
+    else:
+        form = forms.EnregistrementFormationForm()
+    return render(request, 'user/inscription_formation.html', {'form': form})

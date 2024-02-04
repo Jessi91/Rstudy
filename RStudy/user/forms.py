@@ -2,6 +2,7 @@
 from django.contrib.auth import get_user_model
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django import forms
+from home.models import EnregistrementFormation
 
 
 class SignupForm(UserCreationForm):
@@ -20,3 +21,7 @@ class ReadUpdateForm(forms.ModelForm):
         fields = ('email', 'first_name', 'last_name', 'sexe_f', 'date_naissance', 'adresse', 'num_tel')
 
 
+class EnregistrementFormationForm(forms.ModelForm):
+    class Meta:
+        model = EnregistrementFormation
+        fields = ['formation', 'date_debut', 'date_fin', 'niveau'] 
