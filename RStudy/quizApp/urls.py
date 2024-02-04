@@ -9,4 +9,5 @@ urlpatterns = [
     path('api/get-quiz/', views.get_quiz, name='get_quiz'),
     path('creer-tache/', views.create_task, name='creer_tache'),
     path('calendrier-user/', views.display_user_calendar, name='calendrier_utilisateur'),
+
 ]

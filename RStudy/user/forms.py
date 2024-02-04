@@ -25,3 +25,8 @@ class EnregistrementFormationForm(forms.ModelForm):
     class Meta:
         model = EnregistrementFormation
         fields = ['formation', 'date_debut', 'date_fin', 'niveau'] 
+
+        widgets = {
+            'date_debut': forms.DateInput(attrs={'type': 'date'}),
+            'date_fin': forms.DateInput(attrs={'type': 'date'}),
+        }

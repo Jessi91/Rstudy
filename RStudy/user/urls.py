@@ -10,4 +10,6 @@ urlpatterns = [
     path('update/', user.views.update_profile, name='update_profile'),
     path('logout/', LogoutView.as_view(next_page='/'), name='logout'),
     path('inscription-formation/', user.views.inscription_formation, name='inscription_formation'),
+    path('liste_matiere/', user.views.liste_matiere, name='liste_matiere'),
+    
 ]

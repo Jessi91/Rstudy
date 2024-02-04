@@ -1,17 +1,20 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse, JsonResponse 
-from home.models import Matiere
+from home.models import Matiere, EnregistrementFormation, MatiereFormation
 from .models import *
 import random 
 from .forms import TaskForm
 from utils import space_google_url, connect_google_api
 from google.oauth2 import service_account
 from googleapiclient.discovery import build
+from django.contrib.auth.decorators import login_required
 
 def home(request):
     context = {'matieres': Matiere.objects.all()}
-    if request.GET.get('matiere'):
-        return redirect(f"quizApp/quiz/?matiere={request.GET.get('matiere')}")
+    print(request.GET.get('matiere'))
+    if request.GET.get('Matiere:'):
+        print(request.GET)
+        return redirect(f"quizApp/quiz/?matiere={request.GET.get('Matiere')}")
     return render(request, 'quizApp/home.html', context)
 
 
@@ -28,8 +31,10 @@ def quiz(request):
 #     return render(request, 'quizApp/quiz.html', context)
 
 
+
 def get_quiz(request):
     try:
+        print(request.GET)
         matiere_name = request.GET.get('matiere')
         print(f"Matière : {matiere_name}")  # Add this line for debugging
         question_objs = Question.objects.all()

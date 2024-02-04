@@ -4,7 +4,7 @@ from django.shortcuts import redirect, render
 from django.views.generic import View
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.decorators import login_required
-
+from home.models import *
 from . import forms
 
 def signup_page(request):
@@ -70,8 +70,24 @@ def inscription_formation(request):
         if form.is_valid():
             enregistrement = form.save(commit=False)
             enregistrement.user = request.user  # Définir l'utilisateur actuellement connecté comme l'utilisateur de l'enregistrement
+            
             enregistrement.save()
-            return redirect('nom_de_l_url_après_inscription')  # Redirigez vers une page appropriée
+            return redirect('liste_matiere')  # Redirigez vers une page appropriée
     else:
         form = forms.EnregistrementFormationForm()
     return render(request, 'user/inscription_formation.html', {'form': form})
+
+@login_required
+def liste_matiere(request):
+    enregistrements = EnregistrementFormation.objects.filter(user=request.user)
+    matieres = []
+
+    for enregistrement in enregistrements:
+        formation = enregistrement.formation
+        print(formation)
+        matieresFormation = MatiereFormation.objects.filter(formation=formation)
+
+        for matiereFormation in matieresFormation:
+            matieres.append(matiereFormation.matiere)
+
+    return render(request, 'user/list_matieres.html', {'matieres': matieres, 'enregistrements': enregistrements})
