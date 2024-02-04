@@ -1,4 +1,13 @@
-{% extends "base.html" %}
-{% block body %}
-<iframe src="https://calendar.google.com/calendar/embed?src=286bafe58f51e65732d9eeee53f3be0ddcabf72d93f71111ff291637b6c5a60b%40group.calendar.google.com&ctz=Europe%2FParis" style="border: 0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
-{% endblock body %}
+{% extends 'base.html' %}
+
+{% block content %}
+  <h2>Calendrier Google de l'utilisateur :</h2>
+  <ul class="list-group">
+    {% for event in user_events %}
+      <li class="list-group-item">
+        <span class="badge badge-primary">{{ event.summary }}</span>
+        {{ event.start.dateTime }}
+      </li>
+    {% endfor %}
+  </ul>
+{% endblock %}

@@ -1,7 +1,9 @@
 from django.db import models 
 import uuid 
 import random 
+from django.contrib.auth import get_user_model
 
+User = get_user_model()
 
 class BaseModel(models.Model): 
 	uid = models.UUIDField(primary_key=True, 
@@ -48,3 +50,13 @@ class Answer(BaseModel):
 	
 	def __str__(self) -> str: 
 		return self.answer 
+
+class Task(models.Model):
+    title = models.CharField(max_length=255)
+    details = models.CharField(max_length=255)
+    start_datetime = models.DateTimeField()
+    end_datetime = models.DateTimeField()
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.title

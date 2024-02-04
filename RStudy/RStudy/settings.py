@@ -121,7 +121,7 @@ WSGI_APPLICATION = 'RStudy.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'rstudy',
+        'NAME': 'rstudy_db',
         'USER': 'root',
         'HOST' : 'localhost',
         'PORT' : '3306',
