@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block head %}
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+          crossorigin="anonymous"> 
+
+    <!-- Page title -->
+    <title>Django Quiz App</title> 
+{% endblock %}
+
+{% block content %}
+    <!-- Include Vue.js library -->
+    <script src="https://unpkg.com/vue@3.0.0-rc.5/dist/vue.global.prod.js"></script> 
+
+    <!-- Vue.js app container -->
+    <div class="container mt-5 pt-5">
+        <h1 style="color: green; text-align: center;">Quiz</h1>
+
+        <div class="col-md-6 mx-auto">
+            <form action="" onsubmit="return redirectToQuizPage();">
+                <div class="form-group">
+                    <!-- Label for category selection -->
+                    <label for="">Selectionner une catégorie</label>
+                    <!-- Ajoutez un identifiant unique à votre élément de sélection de catégorie -->
+                    <select name="category" id="categorySelect" class="form-control">
+                        <!-- Vos options de catégorie -->
+                        {% for category in categories %}
+                            <option value="{{ category.category_name }}">{{ category.category_name }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <!-- Submit button -->
+                <button class="btn btn-danger mt-3" type="submit">Soumettre</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        function redirectToQuizPage() {
+            const selectedCategory = document.getElementById('categorySelect').value;
+            if (selectedCategory) {
+                window.location.href = `/quizApp/quiz/?category=${selectedCategory}`;
+            }
+            return false;
+        }
+    </script>
+{% endblock %}

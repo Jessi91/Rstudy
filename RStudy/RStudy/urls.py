@@ -26,6 +26,7 @@ urlpatterns = [
     path('forum/', include('forum.urls')),
     path('user-', include('user.urls')),
     path('notes/', include('notes.urls')),
-    path('promodoro/', include('promodoro.urls'))
+    path('promodoro/', include('promodoro.urls')),
+    path('quizApp/', include('quizApp.urls'))
 ]
 
