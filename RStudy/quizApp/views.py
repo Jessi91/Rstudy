@@ -11,51 +11,47 @@ from django.contrib.auth.decorators import login_required
 
 def home(request):
     context = {'matieres': Matiere.objects.all()}
-    print(request.GET.get('matiere'))
-    if request.GET.get('Matiere:'):
-        print(request.GET)
-        return redirect(f"quizApp/quiz/?matiere={request.GET.get('Matiere')}")
+    if request.GET.get('matiere'):
+        return redirect(f"quizApp/quiz/?matiere={request.GET.get('matiere')}")
     return render(request, 'quizApp/home.html', context)
+
 
 
 # def quiz(request):
 #     category = request.GET.get('category', 'DefaultCategory')  # DefaultCategory can be any default value you want
 #     context = {'category': category}
 #     return render(request, 'quizApp/quiz.html', context)
-def quiz(request): 
+def quiz(request):
     context = {'matiere': request.GET.get('matiere')} 
     return render(request, 'quizApp/quiz.html', context) 
+
 
 # def quiz(request, category=None):
 #     context = {'category': category or 'DefaultCategory'}  
 #     return render(request, 'quizApp/quiz.html', context)
 
-
+from django.http import JsonResponse
+from .models import Question
 
 def get_quiz(request):
     try:
         print(request.GET)
-        matiere_name = request.GET.get('matiere')
-        print(f"Matière : {matiere_name}")  # Add this line for debugging
-        question_objs = Question.objects.all()
-        if matiere_name:
-            question_objs = question_objs.filter(matiere__matiere_name__icontains=matiere_name)
-        question_objs = list(question_objs)
-        random.shuffle(question_objs)
-        data = []
-        for question_obj in question_objs:
-            data.append({
-                "uid": question_obj.uid,
-                "matiere": question_obj.matiere.matiere_name,
-                "question": question_obj.question,
-                "marks": question_obj.marks,
-                "answer": question_obj.get_answers(),
-            })
-        payload = {'status': True, 'data': data}
-        return JsonResponse(payload)
+        matiere_nom = request.GET.get('matiere')
+        questions = Question.objects.filter(matiere__nom__icontains=matiere_nom).prefetch_related('question_answer')
+        
+        data = [{
+            "uid": str(question.uid),
+            "matiere": question.matiere.nom,
+            "question": question.question,
+            "marks": question.marks,
+            "answers": question.get_answers(),
+        } for question in questions]
+        
+        return JsonResponse({'status': True, 'data': data})
     except Exception as e:
         print(e)
-        return HttpResponse("Something went wrong")
+        return JsonResponse({'status': False, 'error': str(e)}, status=500)
+
 
 def create_task(request):
     if request.method == 'POST':
