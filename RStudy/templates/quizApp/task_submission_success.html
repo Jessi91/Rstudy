@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2>Que souhaitez-vous faire ensuite?</h2>
+    <a href="/quizApp/quiz/?category={{ selectedCategory }}" class="btn btn-primary">Commencer le Quiz</a>
+    <!-- Le bouton pour programmer à plus tard n'est pas implémenté ici car cela dépend de votre logique d'application -->
+    <a href="#" class="btn btn-secondary">Programmer à Plus Tard</a>
+</div>
+{% endblock %}

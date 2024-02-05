@@ -2,7 +2,8 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse, JsonResponse 
 from .models import *
 import random 
-
+from .forms import *
+from utils import space_google_url
 
 
 def home(request):
@@ -48,3 +49,23 @@ def get_quiz(request):
     except Exception as e:
         print(e)
         return HttpResponse("Something went wrong")
+
+
+def create_task(request):
+    """Crée une nouvelle tâche et redirige vers Google Calendar pour la programmer."""
+    if request.method == 'POST':
+        form = TaskForm(request.POST)
+        if form.is_valid():
+            task = form.save(commit=False)
+            task.user = request.user
+            task.save()
+            # Génère le lien Google Calendar
+            title = space_google_url(task.title)
+            start_datetime = task.start_datetime.strftime("%Y%m%dT%H%M%S")
+            end_datetime = task.end_datetime.strftime("%Y%m%dT%H%M%S")
+            details = space_google_url(task.details)
+            google_calendar_link = f"https://www.google.com/calendar/render?action=TEMPLATE&text={title}&dates={start_datetime}/{end_datetime}&details={details}"
+            return redirect(google_calendar_link)
+    else:
+        form = TaskForm()
+    return render(request, 'google-apis/save_date.html', {'form': form})
