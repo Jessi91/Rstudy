@@ -7,9 +7,25 @@ services:
     volumes:
       - .:/code
     ports:
-      - "8000:8000"
+      - "8000"
     depends_on:
       - redis
 
   redis:
     image: "redis:alpine"
+
+  mysql:
+    image: mysql:latest
+    container_name: some-mysql
+    restart: always
+    volumes:
+      - data:/var/lib/mysql
+    environment:
+      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+    ports:
+      - "3306"
+
+volumes:
+  data:

@@ -1,19 +1,23 @@
+# Utiliser l'image Python officielle comme image de base
 FROM python:3.8
 
-# Définit le répertoire de travail dans le conteneur
+# Définir le répertoire de travail dans le conteneur
 WORKDIR /app
 
-# Copie le fichier requirements.txt dans le conteneur
-COPY requirements.txt /app/
 
-# Installe les dépendances Python
+# Copier le fichier des dépendances et installer les dépendances
+COPY requirements.txt /app/
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copie l'ensemble du projet dans le conteneur
+# Copier le reste du code source de l'application dans le conteneur
 COPY . /app/
 
-# Expose le port sur lequel votre application va s'exécuter
+# Exposer le port sur lequel l'application va s'exécuter
 EXPOSE 8000
 
-# Commande pour démarrer votre application
+# # Commande pour démarrer l'application
+# CMD ["python", "manage.py", "makemigrations"]
+
+
+# Commande pour démarrer l'application
 CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
