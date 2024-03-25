@@ -82,13 +82,13 @@ ASGI_APPLICATION = 'RStudy.asgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        # 'NAME': config('MYSQL_DATABASE'),
-        'NAME': 'rstudy_master',
-        'USER': config('MYSQL_USER'),
-        'HOST' : 'localhost',
-        'PORT' : '3306',
+        'NAME': 'rstudy_virt',
+        'USER': 'root',
+        'HOST': 'mysql',
+        'PORT': '3306',
     }
 }
+
 
 AUTH_USER_MODEL = "user.User"
 LOGIN_REDIRECT_URL = 'login'

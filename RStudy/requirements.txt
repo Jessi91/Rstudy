@@ -3,3 +3,4 @@ mysqlclient==2.2.0
 django-bootstrap-v5==1.0.11
 channels==4.0.0
 daphne==4.0.0
+config==0.5.1
