@@ -23,10 +23,12 @@ import home.views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('home.urls')),
+    
     path('forum/', include('forum.urls')),
-    path('user-', include('user.urls')),
+    path('user/', include('user.urls')),
     path('notes/', include('notes.urls')),
     path('promodoro/', include('promodoro.urls')),
-    path('quizApp/', include('quizApp.urls'))
+    path('quizApp/', include('quizApp.urls')),
+    # path('espace_collaboratif/', include('espace_collaboratif.urls'))
 ]
 

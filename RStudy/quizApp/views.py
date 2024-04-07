@@ -3,10 +3,10 @@ from django.http import HttpResponse, JsonResponse
 from .models import *
 import random 
 from .forms import *
-from utils import space_google_url
+# from utils import space_google_url
 
 
-def home(request):
+def quizhome(request):
     context = {'categories': Category.objects.all()}
     if request.GET.get('category'):
         return redirect(f"quizApp/quiz/?category={request.GET.get('category')}")

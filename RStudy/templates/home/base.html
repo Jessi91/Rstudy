@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <title>RSTUDY</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+<body class="override">
+    <nav class="navbar navbar-inverse" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="{% url 'index' %}">RSTUDY</a> <!-- Assurez-vous que 'index' est le nom de votre vue pour la page d'accueil dans urls.py -->
+            </div>
+           
+            <div id="navbar" class="collapse navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    {% if user.is_authenticated %}
+                        <li><a href="{% url 'logout' %}">Déconnecter</a></li> <!-- Remplacez 'logout' par le nom de votre vue de déconnexion dans urls.py -->
+                    {% else %}
+                        <li><a href="{% url 'login' %}">Se connecter</a></li> <!-- Remplacez 'login' par le nom de votre vue de connexion dans urls.py -->
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </nav>
+   
+    <div class="container">
+        <div class="row">
+            {% block content %}{% endblock %}
+        </div>
+    </div>
+   
+    <!-- Les scripts JS pour Bootstrap -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</body>
+</html>

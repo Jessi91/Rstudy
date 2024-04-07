@@ -14,7 +14,8 @@ from .models import Invitation
 
 # Create your views here.
 def index(request):
-    return render(request, 'home/index.html')
+    
+    return render(request,'home/index.html')
 
 @login_required
 def creer_groupe(request):

@@ -32,11 +32,10 @@ def login_page(request):
             if user is not None:
                 login(request, user)
                 message = f'Bonjour, {user.email}! Vous êtes connecté.'
-                return redirect('home')
+                return redirect('index')
             else:
                 message = 'Les informations invalides.'
-    return render(
-  request, 'user/login.html', context={'form': form, 'message': message})
+    return render(request, 'user/login.html', context={'form': form, 'message': message})
 
 @login_required
 def reussi(request) :

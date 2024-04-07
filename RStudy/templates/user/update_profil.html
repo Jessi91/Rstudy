@@ -1,8 +1,27 @@
+{% extends 'home/base.html' %} 
+
 {% block content %}
-    <h1>Mettre à jour le profil</h1>
-    <form method="post">
+<div class="container">
+    <h2>Inscription</h2>
+    <form method="post" class="readupdate-form">
         {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Mettre à jour le profil</button>
+        {% for field in form %}
+            <div class="form-group">
+                <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                {{ field }}
+                {% if field.help_text %}
+                    <small class="form-text text-muted">{{ field.help_text }}</small>
+                {% endif %}
+                {% if field.errors %}
+                    {% for error in field.errors %}
+                        <div class="alert alert-danger" role="alert">
+                            {{ error }}
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            </div>
+        {% endfor %}
+        <button type="submit" class="btn btn-primary">S’inscrire</button>
     </form>
-{% endblock %}
+</div>
+{% endblock content %}
