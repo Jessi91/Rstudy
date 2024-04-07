@@ -8,3 +8,10 @@ daphne==4.0.0
 django-rest-auth==0.9.5
 djangorestframework== 3.14.0
 ttkbootstrap==1.10.1
+google==3.0.0
+google-api-core==2.18.0
+google-api-python-client==2.125.0
+google-auth==2.29.0
+google-auth-httplib2==0.2.0
+google-auth-oauthlib==1.2.0
+googleapis-common-protos==1.63.0

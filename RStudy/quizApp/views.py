@@ -3,7 +3,7 @@ from django.http import HttpResponse, JsonResponse
 from .models import *
 import random 
 from .forms import *
-# from utils import space_google_url
+from utils import space_google_url
 
 
 def quizhome(request):
